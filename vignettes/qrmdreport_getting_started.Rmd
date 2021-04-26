@@ -1,0 +1,75 @@
+---
+title: "Getting Started with qrmdtmpl"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting Started with qrmdtmpl}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+# rmdhelp::show_knit_hook_call()
+knitr::knit_hooks$set(hook_convert_odg = rmdhelp::hook_convert_odg)
+```
+
+```{r setup, eval=FALSE}
+library(qrmdtmpl)
+```
+
+# Disclaimer
+The way how to use the package `qrmdtmpl` to produce project reports based on a given template is described.
+
+
+# Package Installation
+The first step is to install the package `qrmdtmpl`. 
+
+```{r, eval=FALSE}
+remotes::install_github(repo = 'fbzwsqualitasag/qrmdtmpl')
+```
+
+
+# New Report Using RStudio
+After the installation, a new report based on the template in `qrmdtmpl` can be created using `File -> New File -> RMarkdown -> From Template -> Qualitas AG Project Report`. 
+
+```{r rstudio-new-report, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg"}
+#rmdhelp::use_odg_graphic(ps_path = 'odg/rstudio-new-report.odg')
+knitr::include_graphics(path = "odg/rstudio-new-report.png")
+```
+ 
+
+# From R Console
+A new report can also be generated from the R Console using the command
+
+```{r rmd-new-report, eval=FALSE}
+rmarkdown::draft(file = 'report1', package = 'qrmdtmpl', template = 'qprojectreport', create_dir = TRUE)
+```
+
+This creates a new RMarkdown file called `report1.Rmd` in a new subdirectory called `report1`. This can then be edited and knit to a pdf-document.
+
+
+# Wrapper Functions
+The following wrapper functions are available in this package 'qrmdtmpl'
+
+```{r eval=FALSE}
+# slides
+qrmdtmpl::draft_qbeamerslides(ps_path = '20210216_test_slides_no_rmd')
+qrmdtmpl::draft_qbeamerslides(ps_path = '20210216_test_slides_with_rmd.Rmd')
+
+# empty doc
+qrmdtmpl::draft_qemptydoc(ps_path = '20210216_test_empty_no_rmd')
+qrmdtmpl::draft_qemptydoc(ps_path = '20210216_test_empty_with_rmd.Rmd')
+
+# generic doc
+qrmdtmpl::draft_qgenericdoc(ps_path = '20210216_test_generic_no_rmd')
+qrmdtmpl::draft_qgenericdoc(ps_path = '20210216_test_generic_with_rmd.Rmd')
+
+# report
+qrmdtmpl::draft_qprojectreport(ps_path = '20210216_test_report_no_rmd')
+qrmdtmpl::draft_qprojectreport(ps_path = '20210216_test_report_with_rmd.Rmd')
+
+```
+

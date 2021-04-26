@@ -1,0 +1,56 @@
+---
+title: "Creating A Project Report Template for RMarkdown with qrmdtmpl"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Creating A Project Report Template}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, eval=FALSE}
+library(qrmdtmpl)
+```
+
+
+## Disclaimer
+Experiments, problems and design decisions related to coming up with a R package that allows for the seamless creation of RMarkdown reports are described and documented.
+
+
+## Background
+At the end of the development of a new analysis procedure, results are to be summarized in a report. 
+
+
+## Alternative
+According to https://usethis.r-lib.org/reference/use_rmarkdown_template.html a new RMarkdown template can be created by 
+
+``` r 
+usethis::use_rmarkdown_template(template_name = "Qualitas AG Project Report", 
+                                template_dir  = 'quagprojectreport',
+                                template_description = 'Report for FB-ZWS Projects for Qualitas AG')
+```
+
+This creates a subdirectory named 'quagprojectreport' which contains 
+
+* template.yaml: file with Information about the template
+* subdirectory 'skeleton': This directory contains the file 'skeleton.Rmd' which is the template for the RMarkdown document. 
+
+For any given template, the above command must only be run once. After that the template can be adapted to the requirements that must be fullfilled for the documents that are later to be generated from this template.
+
+
+## Beamer Template
+The beamer template was created with 
+
+``` r
+usethis::use_rmarkdown_template(template_name = "Empty Beamer Slides",
+template_dir  = 'quagbeamer',
+template_description = 'Empty Beamer Slides for a Presentation')
+
+```
+
