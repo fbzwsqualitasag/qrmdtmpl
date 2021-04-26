@@ -1,13 +1,15 @@
 Package: qrmdtmpl
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: RMarkdown Templates for Qualitas AG
+Version: 0.0.1
 Authors@R: 
     person(given = "Peter",
            family = "von Rohr",
            role = c("aut", "cre"),
            email = "peter.vonrohr@qualitasag.ch")
-Description: What the package does (one paragraph).
+Description: RMarkdown templates for reports and other documents are provided. These templates can be used with RStudio or with rmarkdown.
 License: MIT + file LICENSE
+URL: https://fbzwsqualitasag.github.io/qrmdtmpl/
+BugReports: https://github.com/fbzwsqualitasag/qrmdtmpl/issues
 Encoding: UTF-8
 Language: en
 LazyData: true

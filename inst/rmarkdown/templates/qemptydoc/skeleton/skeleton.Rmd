@@ -1,0 +1,13 @@
+---
+title: "Template Title"
+author: "`r Sys.info()[['user']]`"
+date: "`r Sys.Date()`"
+output: output_format
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Disclaimer
+
