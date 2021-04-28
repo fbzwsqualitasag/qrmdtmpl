@@ -8,7 +8,7 @@
 #' Rmarkdown document with reasonable default values.
 #'
 #' @details
-#' The template 'qemptydoc' is taken from this package 'qrmdreport'.
+#' The template 'qemptydoc' is taken from this package 'qrmdtmpl'.
 #'
 #' @param ps_path path to the document to be created
 #' @param ps_template name of the tempalte
@@ -26,7 +26,7 @@
 #' @export draft_qemptydoc
 draft_qemptydoc <- function(ps_path,
                             ps_template   = 'qemptydoc',
-                            ps_package    = 'qrmdreport',
+                            ps_package    = 'qrmdtmpl',
                             ps_create_dir = "default",
                             pb_edit       = FALSE,
                             pb_open       = rlang::is_interactive()){
@@ -68,7 +68,7 @@ draft_qemptydoc <- function(ps_path,
 #' Rmarkdown document including the logo on the title page.
 #'
 #' @details
-#' The template 'qemptydoc' is taken from this package 'qrmdreport'.
+#' The template 'qemptydoc' is taken from this package 'qrmdtmpl'.
 #'
 #' @param ps_path path to the document to be created
 #' @param ps_template name of the tempalte
@@ -86,7 +86,7 @@ draft_qemptydoc <- function(ps_path,
 #' @export draft_qgenericdoc
 draft_qgenericdoc <- function(ps_path,
                               ps_template   = 'qgenericdoc',
-                              ps_package    = 'qrmdreport',
+                              ps_package    = 'qrmdtmpl',
                               ps_create_dir = "default",
                               pb_edit       = FALSE,
                               pb_open       = rlang::is_interactive()){
@@ -127,7 +127,7 @@ draft_qgenericdoc <- function(ps_path,
 #' report document including the logo on the title page.
 #'
 #' @details
-#' The template 'qemptydoc' is taken from this package 'qrmdreport'.
+#' The template 'qemptydoc' is taken from this package 'qrmdtmpl'.
 #'
 #' @param ps_path path to the document to be created
 #' @param ps_template name of the tempalte
@@ -145,7 +145,7 @@ draft_qgenericdoc <- function(ps_path,
 #' @export draft_qprojectreport
 draft_qprojectreport <- function(ps_path,
                                  ps_template   = 'quagprojectreport',
-                                 ps_package    = 'qrmdreport',
+                                 ps_package    = 'qrmdtmpl',
                                  ps_create_dir = "default",
                                  pb_edit       = FALSE,
                                  pb_open       = rlang::is_interactive()){
@@ -186,7 +186,7 @@ draft_qprojectreport <- function(ps_path,
 #' \code{rmarkdown::draft()}.
 #'
 #' @details
-#' The template quagbeamer is taken from this package qrmdreport.
+#' The template quagbeamer is taken from this package qrmdtmpl.
 #'
 #' @param ps_path path to the document to be created
 #' @param ps_template name of the tempalte
@@ -203,7 +203,7 @@ draft_qprojectreport <- function(ps_path,
 #' @export draft_qbeamerslides
 draft_qbeamerslides <- function(ps_path,
                                    ps_template   = 'quagbeamer',
-                                   ps_package    = 'qrmdreport',
+                                   ps_package    = 'qrmdtmpl',
                                    ps_create_dir = "default",
                                    pb_edit       = FALSE,
                                    pb_open       = rlang::is_interactive()){
