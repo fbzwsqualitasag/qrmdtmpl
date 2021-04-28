@@ -7,7 +7,7 @@
 draft_qbeamerslides(
   ps_path,
   ps_template = "quagbeamer",
-  ps_package = "qrmdreport",
+  ps_package = "qrmdtmpl",
   ps_create_dir = "default",
   pb_edit = FALSE,
   pb_open = rlang::is_interactive()
@@ -31,7 +31,7 @@ Wrapper function to create empty beamer slides document using
 \code{rmarkdown::draft()}.
 }
 \details{
-The template quagbeamer is taken from this package qrmdreport.
+The template quagbeamer is taken from this package qrmdtmpl.
 }
 \examples{
 \dontrun{

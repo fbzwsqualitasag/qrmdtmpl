@@ -7,7 +7,7 @@
 draft_qemptydoc(
   ps_path,
   ps_template = "qemptydoc",
-  ps_package = "qrmdreport",
+  ps_package = "qrmdtmpl",
   ps_create_dir = "default",
   pb_edit = FALSE,
   pb_open = rlang::is_interactive()
@@ -34,7 +34,7 @@ Wrapper function for rmarkdown::draft to create an empty generic
 Rmarkdown document with reasonable default values.
 }
 \details{
-The template 'qemptydoc' is taken from this package 'qrmdreport'.
+The template 'qemptydoc' is taken from this package 'qrmdtmpl'.
 }
 \examples{
 \dontrun{

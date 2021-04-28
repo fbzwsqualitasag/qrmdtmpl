@@ -1,6 +1,6 @@
 Package: qrmdtmpl
 Title: RMarkdown Templates for Qualitas AG
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     person(given = "Peter",
            family = "von Rohr",
