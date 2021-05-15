@@ -5,6 +5,9 @@ date: "`r Sys.Date()`"
 output:
   bookdown::pdf_document2: 
   output_format: default
+bibliography: "bibliography.bib"
+biblio-style: "apalike"
+link-citations: true
 header-includes:
 - \usepackage{xcolor}
 - \usepackage{lscape}  
@@ -20,64 +23,66 @@ header-includes:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+met <- rmdhelp::MendeleyExportToolR6$new()
+# setting the current rmd-file
+met$set_this_rmd_file(ps_this_rmd_file = ifelse(rstudioapi::isAvailable(),
+                              rstudioapi::getActiveDocumentContext()$path,
+                              whereami::thisfile()))
+
 ```
 
 \newpage
 
-# Abkürzungen
+# Abbreviations
 
 
-# Kontext
+# Context
 
 
-# Merkmale
+# Traits
 
 
-# Daten
+# Data
 
-## Datenplausibilisierung
+## Data Check
 
 ## Pedigree
 
-## Datenreduktion
+## Data Reduction
 
 
-# Modell
+# Model
 
 
-# Varianzkomponentenschätzung
+# Variance Components Estimation
 
 
-# Zuchtwertschätzung
+# Prediction of Breeding Values
 
 
-# Darstellung der Zuchtwerte
+# Display of Predicted Breeding Values
 
 
-# Resultate
+# Results
 
-## Grösse der Datensätze
+## Size of Dataset
 
-## Abgangsfrequenzen
+## Culling Frequencies
 
-## Heritabilitäten
+## Heritabilities
 
-## Zuchtwerte
-
-### GA_BV
-
-### GA_RH
+## Predicted Breeding Values
 
 
-# Diskussion
+# Discussion
 
 
-# Empfehlung
+# Recommendation
 
 
-# Themenvorschläge für Folgeprojekte 
+# Proposed Follow-Up Projects 
 
 
-# Literatur
+# References
 
 
