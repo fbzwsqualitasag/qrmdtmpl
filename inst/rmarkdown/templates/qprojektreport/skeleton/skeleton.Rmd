@@ -1,0 +1,93 @@
+---
+title: "Qualitas AG FB-ZWS Projekt Report"
+author: "Autor"
+date: "`r Sys.Date()`"
+output:
+  bookdown::pdf_document2: 
+  output_format: default
+bibliography: "bibliography.bib"
+biblio-style: "apalike"
+link-citations: true
+header-includes:
+- \usepackage{xcolor}
+- \usepackage{lscape}  
+- \usepackage{titling}
+- \pretitle{\vspace{-2cm} \begin{center} \includegraphics[width=\linewidth]{logo/quag_logo.png}\LARGE\\}
+- \posttitle{\end{center}}
+- \newcommand{\blandscape}{\begin{landscape}}
+- \newcommand{\elandscape}{\end{landscape}}
+- \setlength{\voffset}{-0.5cm}
+- \setlength{\headsep}{5pt}
+- \renewcommand{\contentsname}{Inhalt}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# instantiate a new MendeleyExportTool object
+met <- rmdhelp::MendeleyExportToolR6$new()
+# setting the current rmd-file
+met$set_this_rmd_file(ps_this_rmd_file = ifelse(rstudioapi::isAvailable(),
+                              rstudioapi::getActiveDocumentContext()$path,
+                              whereami::thisfile()))
+
+```
+
+\newpage
+
+# Abkürzungen
+
+
+# Kontext
+
+
+# Merkmale
+
+
+# Daten
+
+## Datenplausibilisierung
+
+## Pedigree
+
+## Datenreduktion
+
+
+# Modell
+
+
+# Varianzkomponentenschätzung
+
+
+# Zuchtwertschätzung
+
+
+# Darstellung der Zuchtwerte
+
+
+# Resultate
+
+## Grösse der Datensätze
+
+## Abgangsfrequenzen
+
+## Heritabilitäten
+
+## Zuchtwerte
+
+### GA_BV
+
+### GA_RH
+
+
+# Diskussion
+
+
+# Empfehlung
+
+
+# Themenvorschläge für Folgeprojekte 
+
+
+# Literatur
+
+
