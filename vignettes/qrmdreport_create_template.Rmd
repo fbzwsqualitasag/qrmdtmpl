@@ -54,3 +54,25 @@ template_description = 'Empty Beamer Slides for a Presentation')
 
 ```
 
+
+## Bookdown Template
+We start to create a bookdown based template using the following command
+
+```{r, echo=TRUE, eval=FALSE}
+usethis::use_rmarkdown_template(template_name = "Bookdown Skeleton Project", 
+                                template_dir = 'qbookdown',
+                                template_description = 'Bookdown Skeleton Project for Qualitas AG',
+                                template_create_dir = TRUE)
+```
+
+
+## Tufte Report
+The following command was used to create a templated that is based on a Tufte report.
+
+```{r, echo=TRUE, eval=FALSE}
+usethis::use_rmarkdown_template(template_name = "Tufte Report Skeleton",
+                                template_dir = "qtufte",
+                                template_description = "Tufte Report for Qualitas AG",
+                                template_create_dir = TRUE)
+```
+

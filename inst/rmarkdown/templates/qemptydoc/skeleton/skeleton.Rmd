@@ -1,8 +1,8 @@
 ---
-title: "Template Title"
-author: "`r Sys.info()[['user']]`"
+title: <ph>title</ph>
+author: <ph>author</ph>
 date: "`r Sys.Date()`"
-output: output_format
+output: <ph>output_format</ph>
 ---
 
 ```{r setup, include=FALSE}

@@ -16,6 +16,7 @@
 #' @param ps_create_dir specify whether to create a new directory
 #' @param pb_edit flag whether newly created file should be edited
 #' @param pb_open open the created file in rstudio editor
+#' @param pl_repl_values list with values to replace placeholders
 #'
 #' @return invisible(TRUE)
 #'
@@ -25,11 +26,12 @@
 #' }
 #' @export draft_qemptydoc
 draft_qemptydoc <- function(ps_path,
-                            ps_template   = 'qemptydoc',
-                            ps_package    = 'qrmdtmpl',
-                            ps_create_dir = "default",
-                            pb_edit       = FALSE,
-                            pb_open       = rlang::is_interactive()){
+                            ps_template    = 'qemptydoc',
+                            ps_package     = 'qrmdtmpl',
+                            ps_create_dir  = "default",
+                            pb_edit        = FALSE,
+                            pb_open        = rlang::is_interactive(),
+                            pl_repl_values = NULL){
   # remove any file extensions
   s_path <- tools::file_path_sans_ext(ps_path)
   # use the draft function of rmarkdown
@@ -38,19 +40,26 @@ draft_qemptydoc <- function(ps_path,
                    package    = ps_package,
                    create_dir = ps_create_dir,
                    edit       = pb_edit)
-  # open the file, if specified
+
+  # create full path to new rmd file based on option and ending
+  if (ps_create_dir == 'default') {
+    create_dir <- get_default_create_dir(ps_template = ps_template, ps_package = ps_package)
+  } else {
+    create_dir <- ps_create_dir
+  }
+  if (create_dir){
+    s_base_path <- basename(s_path)
+    s_path <- file.path(s_path, s_base_path)
+  }
+  if (!identical(tolower(tools::file_ext(s_path)), "rmd"))
+    s_path <- paste(s_path, '.Rmd', sep = '')
+
+  # substitute placeholers with values
+  if (!is.null(pl_repl_values))
+    sub_pattern_replacement(ps_path = s_path, pl_repl_values = pl_repl_values)
+
+    # open the file, if specified
   if (pb_open) {
-    if (ps_create_dir == 'default') {
-      create_dir <- get_default_create_dir(ps_template = ps_template, ps_package = ps_package)
-    } else {
-      create_dir <- ps_create_dir
-    }
-    if (create_dir){
-      s_base_path <- basename(s_path)
-      s_path <- file.path(s_path, s_base_path)
-    }
-    if (!identical(tolower(tools::file_ext(s_path)), "rmd"))
-      s_path <- paste(s_path, '.Rmd', sep = '')
     usethis::edit_file(path = s_path)
   }
 
@@ -76,6 +85,7 @@ draft_qemptydoc <- function(ps_path,
 #' @param ps_create_dir specify whether to create a new directory
 #' @param pb_edit flag whether newly created file should be edited
 #' @param pb_open open the created file in rstudio editor
+#' @param pl_repl_values list with values to replace placeholders
 #'
 #' @return invisible(TRUE)
 #'
@@ -89,7 +99,8 @@ draft_qgenericdoc <- function(ps_path,
                               ps_package    = 'qrmdtmpl',
                               ps_create_dir = "default",
                               pb_edit       = FALSE,
-                              pb_open       = rlang::is_interactive()){
+                              pb_open       = rlang::is_interactive(),
+                              pl_repl_values = NULL){
   # remove any file extensions
   s_path <- tools::file_path_sans_ext(ps_path)
   # use the draft function of rmarkdown
@@ -99,18 +110,24 @@ draft_qgenericdoc <- function(ps_path,
                    create_dir = ps_create_dir,
                    edit       = pb_edit)
   # open the file, if specified
+  if (ps_create_dir == 'default') {
+    create_dir <- get_default_create_dir(ps_template = ps_template, ps_package = ps_package)
+  } else {
+    create_dir <- ps_create_dir
+  }
+  if (create_dir){
+    s_base_path <- basename(s_path)
+    s_path <- file.path(s_path, s_base_path)
+  }
+  if (!identical(tolower(tools::file_ext(s_path)), "rmd"))
+    s_path <- paste(s_path, '.Rmd', sep = '')
+
+  # substitute placeholers with values
+  if (!is.null(pl_repl_values))
+    sub_pattern_replacement(ps_path = s_path, pl_repl_values = pl_repl_values)
+
+  # open created document
   if (pb_open) {
-    if (ps_create_dir == 'default') {
-      create_dir <- get_default_create_dir(ps_template = ps_template, ps_package = ps_package)
-    } else {
-      create_dir <- ps_create_dir
-    }
-    if (create_dir){
-      s_base_path <- basename(s_path)
-      s_path <- file.path(s_path, s_base_path)
-    }
-    if (!identical(tolower(tools::file_ext(s_path)), "rmd"))
-      s_path <- paste(s_path, '.Rmd', sep = '')
     usethis::edit_file(path = s_path)
   }
 
@@ -135,6 +152,7 @@ draft_qgenericdoc <- function(ps_path,
 #' @param ps_create_dir specify whether to create a new directory
 #' @param pb_edit flag whether newly created file should be edited
 #' @param pb_open open the created file in rstudio editor
+#' @param pl_repl_values list with values to replace placeholders
 #'
 #' @return invisible(TRUE)
 #'
@@ -148,7 +166,8 @@ draft_qprojectreport <- function(ps_path,
                                  ps_package    = 'qrmdtmpl',
                                  ps_create_dir = "default",
                                  pb_edit       = FALSE,
-                                 pb_open       = rlang::is_interactive()){
+                                 pb_open       = rlang::is_interactive(),
+                                 pl_repl_values = NULL){
   # remove any file extensions
   s_path <- tools::file_path_sans_ext(ps_path)
   # use the draft function of rmarkdown
@@ -158,7 +177,6 @@ draft_qprojectreport <- function(ps_path,
                    create_dir = ps_create_dir,
                    edit       = pb_edit)
   # open the file, if specified
-  if (pb_open) {
     if (ps_create_dir == 'default') {
       create_dir <- get_default_create_dir(ps_template = ps_template, ps_package = ps_package)
     } else {
@@ -170,6 +188,12 @@ draft_qprojectreport <- function(ps_path,
     }
     if (!identical(tolower(tools::file_ext(s_path)), "rmd"))
       s_path <- paste(s_path, '.Rmd', sep = '')
+
+  # substitute placeholers with values
+  if (!is.null(pl_repl_values))
+    sub_pattern_replacement(ps_path = s_path, pl_repl_values = pl_repl_values)
+
+  if (pb_open) {
     usethis::edit_file(path = s_path)
   }
 
@@ -194,6 +218,7 @@ draft_qprojectreport <- function(ps_path,
 #' @param ps_create_dir specify whether to create a new directory
 #' @param pb_edit flag whether newly created file should be edited
 #' @param pb_open open the created file in rstudio editor
+#' @param pl_repl_values list with values to replace placeholders
 #'
 #' @examples
 #' \dontrun{
@@ -202,11 +227,12 @@ draft_qprojectreport <- function(ps_path,
 #'
 #' @export draft_qbeamerslides
 draft_qbeamerslides <- function(ps_path,
-                                   ps_template   = 'quagbeamer',
-                                   ps_package    = 'qrmdtmpl',
-                                   ps_create_dir = "default",
-                                   pb_edit       = FALSE,
-                                   pb_open       = rlang::is_interactive()){
+                                   ps_template    = 'quagbeamer',
+                                   ps_package     = 'qrmdtmpl',
+                                   ps_create_dir  = "default",
+                                   pb_edit        = FALSE,
+                                   pb_open        = rlang::is_interactive(),
+                                   pl_repl_values = NULL){
   # remove any file extensions
   s_path <- tools::file_path_sans_ext(ps_path)
   # use the draft function of rmarkdown
@@ -216,53 +242,90 @@ draft_qbeamerslides <- function(ps_path,
                    create_dir = ps_create_dir,
                    edit       = pb_edit)
   # open the file, if specified
+  if (ps_create_dir == 'default') {
+    create_dir <- get_default_create_dir(ps_template = ps_template, ps_package = ps_package)
+  } else {
+    create_dir <- ps_create_dir
+  }
+  if (create_dir){
+    s_base_path <- basename(s_path)
+    s_path <- file.path(s_path, s_base_path)
+  }
+  if (!identical(tolower(tools::file_ext(s_path)), "rmd"))
+    s_path <- paste(s_path, '.Rmd', sep = '')
+
+  # substitute placeholers with values
+  if (!is.null(pl_repl_values))
+    sub_pattern_replacement(ps_path = s_path, pl_repl_values = pl_repl_values)
+
   if (pb_open) {
-    if (ps_create_dir == 'default') {
-      create_dir <- get_default_create_dir(ps_template = ps_template, ps_package = ps_package)
-    } else {
-      create_dir <- ps_create_dir
-    }
-    if (create_dir){
-      s_base_path <- basename(s_path)
-      s_path <- file.path(s_path, s_base_path)
-    }
-    if (!identical(tolower(tools::file_ext(s_path)), "rmd"))
-      s_path <- paste(s_path, '.Rmd', sep = '')
     usethis::edit_file(path = s_path)
   }
   return(invisible(TRUE))
 }
 
 
-## ----- Helper Functions ----------------------------------------------------
-#'
-#' @title Find Default Option for create_dir
+## ---- Tufte Report ----------------------------------------------------------
+
+#' Create Draft Version of a Tufte Report
 #'
 #' @description
-#' Find the value of the option create_dir from the template.yaml in the
-#' template directory
+#' Wrapper function to create a draft of a Tufte Report using
+#' \code{rmarkdown::draft()}.
 #'
 #' @details
-#' The template.yaml file is read using \code{rmarkdown:::yaml_load_file}
+#' The used RMarkdown template qtufte is taken from this package qrmdtmpl.
 #'
-#' @param ps_template name of the template
-#' @param ps_package name of the package that contains the table
+#' @param ps_path path to the document to be created
+#' @param ps_template name of the tempalte
+#' @param ps_package package which contains the template
+#' @param ps_create_dir specify whether to create a new directory
+#' @param pb_edit flag whether newly created file should be edited
+#' @param pb_open open the created file in rstudio editor
+#' @param pl_repl_values list with values to replace placeholders
 #'
-get_default_create_dir <- function(ps_template,
-                                   ps_package = NULL){
-  # get template path
-  if (!is.null(ps_package)){
-    template_path <-  system.file("rmarkdown", "templates", ps_template, package = ps_package)
-    if (!nzchar(template_path)) {
-      stop("The template '", ps_template, "' was not found in package: ", ps_package)
-    }
+#' @export draft_qtufte
+#'
+#' @examples
+#' \dontrun{
+#' draft_qtuftey(ps_path = "qtufte_report")
+#' }
+draft_qtufte <- function(ps_path,
+                          ps_template    = "qtufte",
+                          ps_package     = "qrmdtmpl",
+                          ps_create_dir  = "default",
+                          pb_edit        = FALSE,
+                          pb_open        = rlang::is_interactive(),
+                          pl_repl_values = NULL){
+  # remove any file extensions
+  s_path <- tools::file_path_sans_ext(ps_path)
+  # use the draft function of rmarkdown
+  rmarkdown::draft(file       = s_path,
+                   template   = ps_template,
+                   package    = ps_package,
+                   create_dir = ps_create_dir,
+                   edit       = pb_edit)
+  # open the file, if specified
+  if (ps_create_dir == 'default') {
+    create_dir <- get_default_create_dir(ps_template = ps_template, ps_package = ps_package)
   } else {
-    template_path <- ps_template
+    create_dir <- ps_create_dir
   }
-  template_yaml <- file.path(template_path, "template.yaml")
-  if (!file.exists(template_yaml)) {
-    stop("No template.yaml file found for template '", ps_template,"'")
+  if (create_dir){
+    s_base_path <- basename(s_path)
+    s_path <- file.path(s_path, s_base_path)
   }
-  template_meta <- rmarkdown:::yaml_load_file(template_yaml)
-  return(template_meta$create_dir)
+  if (!identical(tolower(tools::file_ext(s_path)), "rmd"))
+    s_path <- paste(s_path, '.Rmd', sep = '')
+
+  # substitute placeholers with values
+  if (!is.null(pl_repl_values)){
+    l_repl_values <- extend_repl_values_qtufte(pl_repl_values = pl_repl_values)
+    sub_pattern_replacement(ps_path = s_path, pl_repl_values = l_repl_values)
+  }
+
+  if (pb_open) {
+    usethis::edit_file(path = s_path)
+  }
+  return(invisible(TRUE))
 }

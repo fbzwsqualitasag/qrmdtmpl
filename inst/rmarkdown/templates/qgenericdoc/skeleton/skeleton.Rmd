@@ -1,6 +1,6 @@
 ---
-title: "Generic Document"
-author: "Author"
+title:  <ph>title</ph>
+author: <ph>author</ph>
 date: "`r Sys.Date()`"
 output:
   bookdown::pdf_document2: 

@@ -1,3 +1,5 @@
+# qrmdtmpl 0.0.3
+
 # qrmdtmpl 0.0.2
 
 * Corrected package name in default settings of function parameters

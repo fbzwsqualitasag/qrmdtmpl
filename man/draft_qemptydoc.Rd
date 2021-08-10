@@ -10,7 +10,8 @@ draft_qemptydoc(
   ps_package = "qrmdtmpl",
   ps_create_dir = "default",
   pb_edit = FALSE,
-  pb_open = rlang::is_interactive()
+  pb_open = rlang::is_interactive(),
+  pl_repl_values = NULL
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ draft_qemptydoc(
 \item{pb_edit}{flag whether newly created file should be edited}
 
 \item{pb_open}{open the created file in rstudio editor}
+
+\item{pl_repl_values}{list with values to replace placeholders}
 }
 \value{
 invisible(TRUE)
