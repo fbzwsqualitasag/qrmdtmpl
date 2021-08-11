@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create Empty Generic Rmarkdown Document — draft_qemptydoc • qrmdtmpl</title>
+<title>Replace Template Placeholders with Values — sub_pattern_replacement • qrmdtmpl</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,9 @@
 
 
 
-<meta property="og:title" content="Create Empty Generic Rmarkdown Document — draft_qemptydoc" />
-<meta property="og:description" content="Wrapper function for rmarkdown::draft to create an empty generic
-Rmarkdown document with reasonable default values." />
+<meta property="og:title" content="Replace Template Placeholders with Values — sub_pattern_replacement" />
+<meta property="og:description" content="The skeleton.Rmd template files contain placeholders which are to be
+replaced by the values given in the list pl_repl_values." />
 
 
 
@@ -127,69 +127,47 @@ Rmarkdown document with reasonable default values." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create Empty Generic Rmarkdown Document</h1>
-    <small class="dont-index">Source: <a href='https://github.com/fbzwsqualitasag/qrmdtmpl/blob/master/R/draft_rmd.R'><code>R/draft_rmd.R</code></a></small>
-    <div class="hidden name"><code>draft_qemptydoc.Rd</code></div>
+    <h1>Replace Template Placeholders with Values</h1>
+    <small class="dont-index">Source: <a href='https://github.com/fbzwsqualitasag/qrmdtmpl/blob/master/R/draft_helper.R'><code>R/draft_helper.R</code></a></small>
+    <div class="hidden name"><code>sub_pattern_replacement.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Wrapper function for rmarkdown::draft to create an empty generic
-Rmarkdown document with reasonable default values.</p>
+    <p>The skeleton.Rmd template files contain placeholders which are to be
+replaced by the values given in the list pl_repl_values.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>draft_qemptydoc</span>(
-  <span class='no'>ps_path</span>,
-  <span class='kw'>ps_template</span> <span class='kw'>=</span> <span class='st'>"qemptydoc"</span>,
-  <span class='kw'>ps_package</span> <span class='kw'>=</span> <span class='st'>"qrmdtmpl"</span>,
-  <span class='kw'>ps_create_dir</span> <span class='kw'>=</span> <span class='st'>"default"</span>,
-  <span class='kw'>pb_edit</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>pb_open</span> <span class='kw'>=</span> <span class='kw pkg'>rlang</span><span class='kw ns'>::</span><span class='fu'><a href='https://rlang.r-lib.org/reference/is_interactive.html'>is_interactive</a></span>(),
-  <span class='kw'>pl_repl_values</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)</pre>
+    <pre class="usage"><span class='fu'>sub_pattern_replacement</span>(<span class='no'>ps_path</span>, <span class='no'>pl_repl_values</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>ps_path</th>
-      <td><p>path to the document to be created</p></td>
-    </tr>
-    <tr>
-      <th>ps_template</th>
-      <td><p>name of the tempalte</p></td>
-    </tr>
-    <tr>
-      <th>ps_package</th>
-      <td><p>package which contains the template</p></td>
-    </tr>
-    <tr>
-      <th>ps_create_dir</th>
-      <td><p>specify whether to create a new directory</p></td>
-    </tr>
-    <tr>
-      <th>pb_edit</th>
-      <td><p>flag whether newly created file should be edited</p></td>
-    </tr>
-    <tr>
-      <th>pb_open</th>
-      <td><p>open the created file in rstudio editor</p></td>
+      <td><p>path to new Rmarkdown file</p></td>
     </tr>
     <tr>
       <th>pl_repl_values</th>
-      <td><p>list with values to replace placeholders</p></td>
+      <td><p>list with replacement values</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>invisible(TRUE)</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>The template 'qemptydoc' is taken from this package 'qrmdtmpl'.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>draft_qemptydoc</span>(<span class='kw'>ps_path</span> <span class='kw'>=</span> <span class='st'>'empty_test_doc'</span>)
+<span class='no'>tmpdir</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span>()
+<span class='no'>s_skeleton_path</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"rmarkdown"</span>, <span class='st'>"templates"</span>, <span class='st'>"qemptydoc"</span>, <span class='st'>"skeleton"</span>, <span class='st'>"skeleton.Rmd"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"qrmdtmpl"</span>)
+<span class='no'>s_skeleton_file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/basename.html'>basename</a></span>(<span class='no'>s_skeleton_path</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.copy</a></span>(<span class='kw'>from</span> <span class='kw'>=</span> <span class='no'>s_skeleton_path</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='no'>tmpdir</span>)
+<span class='no'>s_trg_path</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='no'>tmpdir</span>, <span class='no'>s_skeleton_file</span>)
+<span class='kw pkg'>qrmdtmpl</span><span class='kw ns'>:::</span><span class='fu'>sub_pattern_replacement</span>(<span class='kw'>ps_path</span> <span class='kw'>=</span> <span class='no'>s_trg_path</span>,
+                        <span class='kw'>pl_repl_values</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>author</span> <span class='kw'>=</span> <span class='st'>"Peter von Rohr"</span>,
+                                              <span class='kw'>title</span>  <span class='kw'>=</span> <span class='st'>"A New Rmarkdown Document"</span>,
+                                              <span class='kw'>output_format</span> <span class='kw'>=</span> <span class='st'>"html_document"</span>))
+<span class='no'>vec_doc</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/readLines.html'>readLines</a></span>(<span class='kw'>con</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/connections.html'>file</a></span>(<span class='no'>s_trg_path</span>))
+<span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='no'>vec_doc</span>, <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='st'>"\n"</span>), <span class='st'>"\n"</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.remove</a></span>(<span class='no'>s_trg_path</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/unlink.html'>unlink</a></span>(<span class='no'>tmpdir</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

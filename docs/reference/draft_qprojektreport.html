@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create Empty Generic Rmarkdown Document — draft_qemptydoc • qrmdtmpl</title>
+<title>Create Qualitas FB ZWS Report (German) — draft_qprojektreport • qrmdtmpl</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,9 @@
 
 
 
-<meta property="og:title" content="Create Empty Generic Rmarkdown Document — draft_qemptydoc" />
-<meta property="og:description" content="Wrapper function for rmarkdown::draft to create an empty generic
-Rmarkdown document with reasonable default values." />
+<meta property="og:title" content="Create Qualitas FB ZWS Report (German) — draft_qprojektreport" />
+<meta property="og:description" content="Wrapper function for rmarkdown::draft to create a skeleton for a Qualitas AG
+report document in German. The document includes the logo on the title page." />
 
 
 
@@ -127,24 +127,23 @@ Rmarkdown document with reasonable default values." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create Empty Generic Rmarkdown Document</h1>
+    <h1>Create Qualitas FB ZWS Report (German)</h1>
     <small class="dont-index">Source: <a href='https://github.com/fbzwsqualitasag/qrmdtmpl/blob/master/R/draft_rmd.R'><code>R/draft_rmd.R</code></a></small>
-    <div class="hidden name"><code>draft_qemptydoc.Rd</code></div>
+    <div class="hidden name"><code>draft_qprojektreport.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Wrapper function for rmarkdown::draft to create an empty generic
-Rmarkdown document with reasonable default values.</p>
+    <p>Wrapper function for rmarkdown::draft to create a skeleton for a Qualitas AG
+report document in German. The document includes the logo on the title page.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>draft_qemptydoc</span>(
+    <pre class="usage"><span class='fu'>draft_qprojektreport</span>(
   <span class='no'>ps_path</span>,
-  <span class='kw'>ps_template</span> <span class='kw'>=</span> <span class='st'>"qemptydoc"</span>,
+  <span class='kw'>ps_template</span> <span class='kw'>=</span> <span class='st'>"qprojektreport"</span>,
   <span class='kw'>ps_package</span> <span class='kw'>=</span> <span class='st'>"qrmdtmpl"</span>,
   <span class='kw'>ps_create_dir</span> <span class='kw'>=</span> <span class='st'>"default"</span>,
   <span class='kw'>pb_edit</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>pb_open</span> <span class='kw'>=</span> <span class='kw pkg'>rlang</span><span class='kw ns'>::</span><span class='fu'><a href='https://rlang.r-lib.org/reference/is_interactive.html'>is_interactive</a></span>(),
-  <span class='kw'>pl_repl_values</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+  <span class='kw'>pb_open</span> <span class='kw'>=</span> <span class='kw pkg'>rlang</span><span class='kw ns'>::</span><span class='fu'><a href='https://rlang.r-lib.org/reference/is_interactive.html'>is_interactive</a></span>()
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -174,10 +173,6 @@ Rmarkdown document with reasonable default values.</p>
       <th>pb_open</th>
       <td><p>open the created file in rstudio editor</p></td>
     </tr>
-    <tr>
-      <th>pl_repl_values</th>
-      <td><p>list with values to replace placeholders</p></td>
-    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -185,11 +180,11 @@ Rmarkdown document with reasonable default values.</p>
     <p>invisible(TRUE)</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The template 'qemptydoc' is taken from this package 'qrmdtmpl'.</p>
+    <p>The template 'qprojektreport' is taken from this package 'qrmdtmpl'.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>draft_qemptydoc</span>(<span class='kw'>ps_path</span> <span class='kw'>=</span> <span class='st'>'empty_test_doc'</span>)
+<span class='fu'>draft_qprojektreport</span>(<span class='kw'>ps_path</span> <span class='kw'>=</span> <span class='st'>'empty_test_doc'</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
