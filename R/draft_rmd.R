@@ -144,7 +144,7 @@ draft_qgenericdoc <- function(ps_path,
 #' report document including the logo on the title page.
 #'
 #' @details
-#' The template 'qemptydoc' is taken from this package 'qrmdtmpl'.
+#' The template 'quagprojectreport' is taken from this package 'qrmdtmpl'.
 #'
 #' @param ps_path path to the document to be created
 #' @param ps_template name of the tempalte
@@ -160,8 +160,8 @@ draft_qgenericdoc <- function(ps_path,
 #' \dontrun{
 #' draft_quagprojectreport(ps_path = 'empty_test_doc')
 #' }
-#' @export draft_qprojectreport
-draft_qprojectreport <- function(ps_path,
+#' @export draft_quagprojectreport
+draft_quagprojectreport <- function(ps_path,
                                  ps_template   = 'quagprojectreport',
                                  ps_package    = 'qrmdtmpl',
                                  ps_create_dir = "default",
@@ -199,6 +199,66 @@ draft_qprojectreport <- function(ps_path,
 
   return(invisible(TRUE))
 }
+
+
+## ---- Qualitas AG FB ZWS Report Dokument ------------------------------------------
+#'
+#' @title Create Qualitas FB ZWS Report (German)
+#'
+#' @description
+#' Wrapper function for rmarkdown::draft to create a skeleton for a Qualitas AG
+#' report document in German. The document includes the logo on the title page.
+#'
+#' @details
+#' The template 'qprojektreport' is taken from this package 'qrmdtmpl'.
+#'
+#' @param ps_path path to the document to be created
+#' @param ps_template name of the tempalte
+#' @param ps_package package which contains the template
+#' @param ps_create_dir specify whether to create a new directory
+#' @param pb_edit flag whether newly created file should be edited
+#' @param pb_open open the created file in rstudio editor
+#'
+#' @return invisible(TRUE)
+#'
+#' @examples
+#' \dontrun{
+#' draft_qprojektreport(ps_path = 'empty_test_doc')
+#' }
+#' @export draft_qprojektreport
+draft_qprojektreport <- function(ps_path,
+                                    ps_template   = 'qprojektreport',
+                                    ps_package    = 'qrmdtmpl',
+                                    ps_create_dir = "default",
+                                    pb_edit       = FALSE,
+                                    pb_open       = rlang::is_interactive()){
+  # remove any file extensions
+  s_path <- tools::file_path_sans_ext(ps_path)
+  # use the draft function of rmarkdown
+  rmarkdown::draft(file       = s_path,
+                   template   = ps_template,
+                   package    = ps_package,
+                   create_dir = ps_create_dir,
+                   edit       = pb_edit)
+  # open the file, if specified
+  if (pb_open) {
+    if (ps_create_dir == 'default') {
+      create_dir <- get_default_create_dir(ps_template = ps_template, ps_package = ps_package)
+    } else {
+      create_dir <- ps_create_dir
+    }
+    if (create_dir){
+      s_base_path <- basename(s_path)
+      s_path <- file.path(s_path, s_base_path)
+    }
+    if (!identical(tolower(tools::file_ext(s_path)), "rmd"))
+      s_path <- paste(s_path, '.Rmd', sep = '')
+    usethis::edit_file(path = s_path)
+  }
+
+  return(invisible(TRUE))
+}
+
 
 
 ## ---- Empty Beamer Slides ---------------------------------------------------

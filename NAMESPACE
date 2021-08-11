@@ -3,5 +3,6 @@
 export(draft_qbeamerslides)
 export(draft_qemptydoc)
 export(draft_qgenericdoc)
-export(draft_qprojectreport)
 export(draft_qtufte)
+export(draft_qprojektreport)
+export(draft_quagprojectreport)

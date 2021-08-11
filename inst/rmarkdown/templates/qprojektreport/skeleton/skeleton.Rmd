@@ -1,6 +1,6 @@
 ---
-title: <ph>title</ph>
-author: <ph>author</ph>
+title: "Qualitas AG FB-ZWS Projekt Report"
+author: "Autor"
 date: "`r Sys.Date()`"
 output:
   bookdown::pdf_document2: 
@@ -18,11 +18,12 @@ header-includes:
 - \newcommand{\elandscape}{\end{landscape}}
 - \setlength{\voffset}{-0.5cm}
 - \setlength{\headsep}{5pt}
-- \renewcommand{\contentsname}{Content}
+- \renewcommand{\contentsname}{Inhalt}
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+# instantiate a new MendeleyExportTool object
 met <- rmdhelp::MendeleyExportToolR6$new()
 # setting the current rmd-file
 met$set_this_rmd_file(ps_this_rmd_file = ifelse(rstudioapi::isAvailable(),
@@ -33,56 +34,60 @@ met$set_this_rmd_file(ps_this_rmd_file = ifelse(rstudioapi::isAvailable(),
 
 \newpage
 
-# Abbreviations
+# Abkürzungen
 
 
-# Context
+# Kontext
 
 
-# Traits
+# Merkmale
 
 
-# Data
+# Daten
 
-## Data Check
+## Datenplausibilisierung
 
 ## Pedigree
 
-## Data Reduction
+## Datenreduktion
 
 
-# Model
+# Modell
 
 
-# Variance Components Estimation
+# Varianzkomponentenschätzung
 
 
-# Prediction of Breeding Values
+# Zuchtwertschätzung
 
 
-# Display of Predicted Breeding Values
+# Darstellung der Zuchtwerte
 
 
-# Results
+# Resultate
 
-## Size of Dataset
+## Grösse der Datensätze
 
-## Culling Frequencies
+## Abgangsfrequenzen
 
-## Heritabilities
+## Heritabilitäten
 
-## Predicted Breeding Values
+## Zuchtwerte
 
+### GA_BV
 
-# Discussion
-
-
-# Recommendation
+### GA_RH
 
 
-# Proposed Follow-Up Projects 
+# Diskussion
 
 
-# References
+# Empfehlung
+
+
+# Themenvorschläge für Folgeprojekte 
+
+
+# Literatur
 
 
