@@ -32,26 +32,6 @@ get_default_create_dir <- function(ps_template,
 }
 
 
-## ---- Defaults for Replacement Value Lists -----------------------------------
-
-#' Defaults For Tufte Report Value Replacement List
-#'
-#' @description
-#' The placeholder replacement in a RMarkdown template skeleton expectes a
-#' fixed number of replacement values. The default values for this value
-#' replacement list is returned
-#'
-#' @return default for tufte report value replacement list
-get_repl_value_defaults_tufte <- function(){
-  return(list(author        = whoami::username(),
-              title         = 'Default Title for Tufte Report',
-              date          = as.character(Sys.Date()),
-              output_format = ''))
-}
-
-
-
-
 ## ---- Glue Replacement Values To Placeholders --------------------------------
 
 
@@ -90,25 +70,6 @@ string_replace <- function(ps_tmpl, pl_repl_value,
   }
 
   return(s_result)
-}
-
-
-## ---- Replacement Value Defaults ---------------------------------------------
-
-#' Defaults For Generic Comparison Plot Report Template Replacement Values
-#'
-#' @description
-#' The template for the comparison plot report contains a number of placeholders
-#' which are to be replaced by values when the report is generated. This function
-#' returns useful default values to be inserted into the template as a replacement
-#' for the placeholders.
-#'
-#' @return list of comparison plot report replacement values
-get_generic_replacement_values <- function(){
-  return(list(title                = "Document Title",
-              author               = whoami::username(),
-              date                 = as.character(Sys.Date()),
-              output_format        = "output_format"))
 }
 
 
@@ -191,3 +152,56 @@ sub_pattern_replacement <- function(ps_path,
 
   return(invisible(NULL))
 }
+
+
+## ---- Replacement Value Defaults ---------------------------------------------
+
+#' Defaults For Generic Comparison Plot Report Template Replacement Values
+#'
+#' @description
+#' The template for the comparison plot report contains a number of placeholders
+#' which are to be replaced by values when the report is generated. This function
+#' returns useful default values to be inserted into the template as a replacement
+#' for the placeholders.
+#'
+#' @return list of comparison plot report replacement values
+get_generic_replacement_values <- function(){
+  return(list(title                = "Document Title",
+              author               = whoami::username(),
+              date                 = as.character(Sys.Date()),
+              output_format        = "output_format"))
+}
+
+
+## ---- Defaults for Replacement Value Lists -----------------------------------
+
+#' Defaults For Tufte Report Value Replacement List
+#'
+#' @description
+#' The placeholder replacement in a RMarkdown template skeleton expectes a
+#' fixed number of replacement values. The default values for this value
+#' replacement list is returned
+#'
+#' @return default for tufte report value replacement list
+get_repl_value_defaults_tufte <- function(){
+  return(list(author        = whoami::username(),
+              title         = 'Default Title for Tufte Report',
+              date          = as.character(Sys.Date()),
+              output_format = ''))
+}
+
+
+#' Defaults for Qualitas AG Projekt Report in Gernman
+#'
+#' @description
+#' Replacement values that are specific for the format of a Qualitas AG
+#' Projekt Report (in German) are returned.
+#'
+#' @return list with replacement values
+get_repl_value_defaults_qprojektreport <- function(){
+  return(list(author        = whoami::username(),
+              title         = "Qualitas AG FB-ZWS Projekt Report",
+              date          = as.character(Sys.Date()),
+              output_format = "bookdown::pdf_document2"))
+}
+

@@ -1,7 +1,7 @@
 ---
-title: "Qualitas AG FB-ZWS Projekt Report"
-author: "Autor"
-date: "`r Sys.Date()`"
+title: <ph>title</ph>
+author: <ph>author</ph>
+date: <ph>date</ph>
 output:
   bookdown::pdf_document2: 
   output_format: default

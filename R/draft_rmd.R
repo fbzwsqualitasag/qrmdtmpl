@@ -203,13 +203,21 @@ draft_qprojektreport <- function(ps_path,
                                  ps_create_dir = "default",
                                  pb_open       = rlang::is_interactive(),
                                  pl_repl_value = NULL){
+
+  # specific default for this format
+  l_default_repl_value <- get_repl_value_defaults_qprojektreport()
+  if (is.null(pl_repl_value)){
+    l_repl_value <- l_default_repl_value
+  } else {
+    l_repl_value <- merge_list_to_default(pl_base = pl_repl_value, pl_default = l_default_repl_value)
+  }
   # call generic draft wrapper
   generic_rmd_draft(ps_path       = ps_path,
                     ps_template   = "qprojektreport",
                     ps_package    = "qrmdtmpl",
                     ps_create_dir = ps_create_dir,
                     pb_open       = pb_open,
-                    pl_repl_value = pl_repl_value)
+                    pl_repl_value = l_repl_value)
     return(invisible(NULL))
 }
 
@@ -278,13 +286,20 @@ draft_qtufte <- function(ps_path,
                          ps_create_dir = "default",
                          pb_open       = rlang::is_interactive(),
                          pl_repl_value = NULL){
+  # specific default for this format
+  l_default_repl_value <- get_repl_value_defaults_tufte()
+  if (is.null(pl_repl_value)){
+    l_repl_value <- l_default_repl_value
+  } else {
+    l_repl_value <- merge_list_to_default(pl_base = pl_repl_value, pl_default = l_default_repl_value)
+  }
   # call generic draft wrapper
   generic_rmd_draft(ps_path       = ps_path,
                     ps_template   = "qtufte",
                     ps_package    = "qrmdtmpl",
                     ps_create_dir = ps_create_dir,
                     pb_open       = pb_open,
-                    pl_repl_value = pl_repl_value)
+                    pl_repl_value = l_repl_value)
     return(invisible(NULL))
 }
 
