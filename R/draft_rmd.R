@@ -43,11 +43,11 @@ generic_rmd_draft <- function(ps_path,
     s_path <- paste(s_path, '.Rmd', sep = '')
 
   # substitute placeholers with values
-  l_default_repl_values <- get_generic_replacement_values()
+  l_default_repl_value <- get_generic_replacement_values()
   if (is.null(pl_repl_value)){
-    l_repl_values <- l_default_repl_values
+    l_repl_value <- l_default_repl_value
   } else {
-    l_repl_values <- merge_list_to_default(pl_base = pl_repl_value, pl_default = l_default_repl_values)
+    l_repl_value <- merge_list_to_default(pl_base = pl_repl_value, pl_default = l_default_repl_value)
   }
   sub_pattern_replacement(ps_path = s_path, pl_repl_value = l_repl_value)
 

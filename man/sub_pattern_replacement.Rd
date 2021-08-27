@@ -6,7 +6,7 @@
 \usage{
 sub_pattern_replacement(
   ps_path,
-  pl_repl_values,
+  pl_repl_value,
   ps_ph_open_tag = "<ph>",
   ps_ph_end_tag = "</ph>"
 )
@@ -14,7 +14,7 @@ sub_pattern_replacement(
 \arguments{
 \item{ps_path}{Path with template text}
 
-\item{pl_repl_values}{list of placeholder replacement values}
+\item{pl_repl_value}{list of placeholder replacement values}
 
 \item{ps_ph_open_tag}{opening tag for placeholder}
 

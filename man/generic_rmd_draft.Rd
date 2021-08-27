@@ -10,7 +10,7 @@ generic_rmd_draft(
   ps_package,
   ps_create_dir,
   pb_open,
-  pl_repl_values
+  pl_repl_value
 )
 }
 \arguments{
@@ -24,7 +24,7 @@ generic_rmd_draft(
 
 \item{pb_open}{flag whether to open the newly created document in rstudio}
 
-\item{pl_repl_values}{list of template placeholder replacement values}
+\item{pl_repl_value}{list of template placeholder replacement values}
 }
 \description{
 This function calls \code{rmarkdown::draft()} to create a new document.

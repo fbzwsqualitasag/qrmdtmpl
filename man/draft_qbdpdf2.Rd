@@ -10,7 +10,7 @@ draft_qbdpdf2(
   ps_package = "qrmdtmpl",
   ps_create_dir = "default",
   pb_open = rlang::is_interactive(),
-  pl_repl_values = NULL
+  pl_repl_value = NULL
 )
 }
 \arguments{
@@ -24,7 +24,7 @@ draft_qbdpdf2(
 
 \item{pb_open}{whether document should be opened}
 
-\item{pl_repl_values}{list with pattern replacement values}
+\item{pl_repl_value}{list with pattern replacement values}
 }
 \description{
 Wrapper to create bookdown pdf document using \code{rmarkdown::draft}.

@@ -10,7 +10,7 @@ draft_qgenericdoc(
   ps_package = "qrmdtmpl",
   ps_create_dir = "default",
   pb_open = rlang::is_interactive(),
-  pl_repl_values = NULL
+  pl_repl_value = NULL
 )
 }
 \arguments{
@@ -24,7 +24,7 @@ draft_qgenericdoc(
 
 \item{pb_open}{open the created file in rstudio editor}
 
-\item{pl_repl_values}{list with values to replace placeholders}
+\item{pl_repl_value}{list with values to replace placeholders}
 }
 \value{
 invisible(TRUE)
