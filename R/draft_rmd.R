@@ -284,8 +284,6 @@ draft_qbeamerslides <- function(ps_path,
 #' The used RMarkdown template qtufte is taken from this package qrmdtmpl.
 #'
 #' @param ps_path path to the document to be created
-#' @param ps_template name of the tempalte
-#' @param ps_package package which contains the template
 #' @param ps_create_dir specify whether to create a new directory
 #' @param pb_open open the created file in rstudio editor
 #' @param pl_repl_value list with values to replace placeholders
@@ -297,18 +295,16 @@ draft_qbeamerslides <- function(ps_path,
 #' draft_qtufte(ps_path = "qtufte_report")
 #' }
 draft_qtufte <- function(ps_path,
-                          ps_template    = "qtufte",
-                          ps_package     = "qrmdtmpl",
-                          ps_create_dir  = "default",
-                          pb_open        = rlang::is_interactive(),
-                          pl_repl_value = NULL){
+                         ps_create_dir = "default",
+                         pb_open       = rlang::is_interactive(),
+                         pl_repl_value = NULL){
   # call generic draft wrapper
-  generic_rmd_draft <- function(ps_path        = ps_path,
-                                ps_template    = ps_template,
-                                ps_package     = ps_package,
-                                ps_create_dir  = ps_create_dir,
-                                pb_open        = pb_open,
-                                pl_repl_value = pl_repl_value)
+  generic_rmd_draft(ps_path       = ps_path,
+                    ps_template   = "qtufte",
+                    ps_package    = "qrmdtmpl",
+                    ps_create_dir = ps_create_dir,
+                    pb_open       = pb_open,
+                    pl_repl_value = pl_repl_value)
     return(invisible(NULL))
 }
 
@@ -337,12 +333,12 @@ draft_qbdpdf2 <- function(ps_path,
                           pb_open        = rlang::is_interactive(),
                           pl_repl_value  = NULL){
   # call generic draft wrapper
-  generic_rmd_draft(ps_path        = ps_path,
-                    ps_template    = "qbdpdf2",
-                    ps_package     = "qrmdtmpl",
-                    ps_create_dir  = ps_create_dir,
-                    pb_open        = pb_open,
-                    pl_repl_value  = pl_repl_value)
+  generic_rmd_draft(ps_path       = ps_path,
+                    ps_template   = "qbdpdf2",
+                    ps_package    = "qrmdtmpl",
+                    ps_create_dir = ps_create_dir,
+                    pb_open       = pb_open,
+                    pl_repl_value = pl_repl_value)
 
 
 }
