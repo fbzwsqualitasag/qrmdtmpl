@@ -32,85 +32,6 @@ get_default_create_dir <- function(ps_template,
 }
 
 
-## ----- Pattern Replacement ---------------------------------------------------
-#' @title Replace Template Placeholders with Values
-#'
-#' @description
-#' The skeleton.Rmd template files contain placeholders which are to be
-#' replaced by the values given in the list pl_repl_values.
-#'
-#' @param ps_path path to new Rmarkdown file
-#' @param pl_repl_values list with replacement values
-#'
-#' @examples
-#' \dontrun{
-#' tmpdir <- tempdir()
-#' s_skeleton_path <- system.file("rmarkdown", "templates", "qemptydoc", "skeleton", "skeleton.Rmd", package = "qrmdtmpl")
-#' s_skeleton_file <- basename(s_skeleton_path)
-#' file.copy(from = s_skeleton_path, to = tmpdir)
-#' s_trg_path <- file.path(tmpdir, s_skeleton_file)
-#' qrmdtmpl:::sub_pattern_replacement(ps_path = s_trg_path,
-#'                         pl_repl_values = list(author = "Peter von Rohr",
-#'                                               title  = "A New Rmarkdown Document",
-#'                                               output_format = "html_document"))
-#' vec_doc <- readLines(con = file(s_trg_path))
-#' cat(paste0(vec_doc, collapse = "\n"), "\n")
-#' file.remove(s_trg_path)
-#' unlink(tmpdir)
-#' }
-sub_pattern_replacement <- function(ps_path, pl_repl_values){
-  # check that file in ps_path exists
-  if (!file.exists(ps_path)) stop (" *** ERROR in sub_pattern_replacement: CANNOT FIND FILE: ", ps_path)
-  # read the template file
-  vec_tmpl <- readLines(con = file(ps_path))
-  s_tmpl <- paste0(vec_tmpl, collapse = "\n")
-  # replace placeholders with values
-  s_result <- glue::glue(s_tmpl,
-                         title = pl_repl_values$title,
-                         author = pl_repl_values$author,
-                         output_format = pl_repl_values$output_format,
-                         .open = "<ph>",
-                         .close = "</ph>")
-  # write result back to file
-  cat(s_result, "\n", file = ps_path)
-
-  return(invisible(TRUE))
-
-}
-
-
-## ---- Extension Of Replacement Value Lists -----------------------------------
-
-#' Extend Replacement Value List
-#'
-#' @description
-#' A given value replacement list is extended by a reasonable choice of defaults
-#' for all missing list elements. The defaults are obtained by special getter
-#' function.
-#'
-#' @param pl_repl_values given value replacement list
-#'
-#' @return l_repl_value_result extended value replacement list
-#'
-#' @examples
-#' \dontrun{
-#' extend_repl_values_qtufte(pl_repl_values = list(title = "Tufte Report Title"))
-#' }
-extend_repl_values_qtufte <- function(pl_repl_values){
-  l_repl_value_result <- get_repl_value_defaults_tufte()
-  vec_names_result <- names(l_repl_value_result)
-  # extend l_repl_value_result with the values specified in pl_repl_values
-  vec_names <- names(pl_repl_values)
-  for (n_idx in seq_along(vec_names)){
-    s_cur_name <- vec_names[n_idx]
-    if (!is.element(s_cur_name, vec_names_result))
-        stop(" *** ERROR in extend_repl_values_qtufte: Invalid current name: ", s_cur_name)
-    l_repl_value_result[[s_cur_name]] <- pl_repl_values[[s_cur_name]]
-  }
-  return(l_repl_value_result)
-}
-
-
 ## ---- Defaults for Replacement Value Lists -----------------------------------
 
 #' Defaults For Tufte Report Value Replacement List
@@ -124,5 +45,149 @@ extend_repl_values_qtufte <- function(pl_repl_values){
 get_repl_value_defaults_tufte <- function(){
   return(list(author        = whoami::username(),
               title         = 'Default Title for Tufte Report',
+              date          = as.character(Sys.Date()),
               output_format = ''))
+}
+
+
+
+
+## ---- Glue Replacement Values To Placeholders --------------------------------
+
+
+#' @title Replace Placeholders in Template with Replacement Values
+#'
+#' @description
+#' In a template text with placeholders, these placeholders are replaced with
+#' values that are specified via the list of replacement values. As a result
+#' the text is returned with the placeholders replaced by the values specified
+#' in the list of replacement values.
+#'
+#' @details
+#' Placeholders are words that are enclosed between an opening tag and an end tag.
+#' These tags can be specified as arguments ps_ph_open_tag and ps_ph_end_tag.
+#' The word between the tags corresponds to the name of the placeholder. This
+#' name is also used as a name in the list of replacement values. The value
+#' with which the placeholder is to be replaced is given as the list element
+#' associated with the name of the placeholder.
+#'
+#'
+#' @param ps_tmpl template text containing placeholders
+#' @param pl_repl_value list with replacement values
+#' @param ps_ph_open_tag open-tag for placeholder
+#' @param ps_ph_end_tag end-tag for placeholder
+#'
+#' @return s_result where placeholders have been replaced with replacement values
+string_replace <- function(ps_tmpl, pl_repl_value,
+                           ps_ph_open_tag = "<ph>",
+                           ps_ph_end_tag = "</ph>"){
+  # get placeholder tags as names from pl_repl_value
+  vec_ph_tag <- names(pl_repl_value)
+  # initialise result
+  s_result <- ps_tmpl
+  for (p in vec_ph_tag){
+    s_result <- stringr::str_replace(s_result, pattern = paste0(ps_ph_open_tag, p, ps_ph_end_tag, collapse = ""), replacement = pl_repl_value[[p]])
+  }
+
+  return(s_result)
+}
+
+
+## ---- Replacement Value Defaults ---------------------------------------------
+
+#' Defaults For Generic Comparison Plot Report Template Replacement Values
+#'
+#' @description
+#' The template for the comparison plot report contains a number of placeholders
+#' which are to be replaced by values when the report is generated. This function
+#' returns useful default values to be inserted into the template as a replacement
+#' for the placeholders.
+#'
+#' @return list of comparison plot report replacement values
+get_generic_replacement_values <- function(){
+  return(list(title                = "Document Title",
+              author               = whoami::username(),
+              date                 = as.character(Sys.Date()),
+              output_format        = "output_format"))
+}
+
+
+## ---- Default List Extension ------------------------------------------------
+
+
+#' @title Merge List To Default
+#'
+#' @description
+#' Given two lists (pl_base and pl_default), the lists should be merged into a
+#' result list (l_result) such that the result contains all entries of pl_base
+#' and for the entries whose names are in pl_default, but are not in pl_base,
+#' the entries of pl_default is included in l_result. This leads to a list (l_result)
+#' which has the same names as pl_default, but for those names which are also
+#' in pl_base, the values from pl_base overwrite the values of pl_default.
+#'
+#' @details
+#' This merging procedure is used in replacement of placeholders in templates
+#' where only parts of the placeholders are replaced with specified values and
+#' the rest is replaced with assumed default values.
+#'
+#' @param pl_base list of base entries
+#' @param pl_default list with default entries
+#'
+#' @return l_result list with merged entries of pl_base and pl_default
+#'
+#' @examples
+#' \dontrun{
+#' n <- 9
+#' l2 <- lapply(1:n, function(x) x)
+#' names(l2) <- LETTERS[1:9]
+#' merge_list_to_default(pl_base = list(A = 10L, B = 20L), pl_default = l2)
+#' }
+merge_list_to_default <- function(pl_base, pl_default){
+  l_result <- NULL
+  # determine names of pl_base and pl_default
+  vec_name_base <- names(pl_base)
+  vec_name_default <- names(pl_default)
+  # Make sure that result has the same names as pl_default.
+  # When merging, the elements in pl_base have priority
+  for (idx in seq_along(vec_name_default)){
+    s_cur_name <- vec_name_default[idx]
+    if (is.element(s_cur_name, vec_name_base)){
+      l_result[[s_cur_name]] <- pl_base[[s_cur_name]]
+    } else {
+      l_result[[s_cur_name]] <- pl_default[[s_cur_name]]
+    }
+  }
+  return(l_result)
+}
+
+
+## ---- Placeholder Replacement -----------------------------------------------
+
+
+#' @title Replacement of Placeholders
+#'
+#' @param ps_path Path with template text
+#' @param pl_repl_values list of placeholder replacement values
+#' @param ps_ph_open_tag opening tag for placeholder
+#' @param ps_ph_end_tag closing tag for placeholder
+#'
+sub_pattern_replacement <- function(ps_path,
+                                    pl_repl_values,
+                                    ps_ph_open_tag = "<ph>",
+                                    ps_ph_end_tag = "</ph>"){
+  # read the text from ps_path
+  con_tmpl <- file(description = ps_path)
+  vec_tmpl <- readLines(con = con_tmpl)
+  close(con = con_tmpl)
+  s_tmpl <- paste0(vec_tmpl, collapse = "\n")
+  # call the substitution
+  s_subs_result <- string_replace(ps_tmpl        = s_tmpl,
+                                  pl_repl_value  = pl_repl_value,
+                                  ps_ph_open_tag = ps_ph_open_tag,
+                                  ps_ph_end_tag  = ps_ph_end_tag)
+
+  # write back to ps_path
+  cat(s_subs_result, file = ps_path)
+
+  return(invisible(NULL))
 }

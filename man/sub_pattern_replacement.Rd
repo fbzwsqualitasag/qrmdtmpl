@@ -2,33 +2,24 @@
 % Please edit documentation in R/draft_helper.R
 \name{sub_pattern_replacement}
 \alias{sub_pattern_replacement}
-\title{Replace Template Placeholders with Values}
+\title{Replacement of Placeholders}
 \usage{
-sub_pattern_replacement(ps_path, pl_repl_values)
+sub_pattern_replacement(
+  ps_path,
+  pl_repl_values,
+  ps_ph_open_tag = "<ph>",
+  ps_ph_end_tag = "</ph>"
+)
 }
 \arguments{
-\item{ps_path}{path to new Rmarkdown file}
+\item{ps_path}{Path with template text}
 
-\item{pl_repl_values}{list with replacement values}
+\item{pl_repl_values}{list of placeholder replacement values}
+
+\item{ps_ph_open_tag}{opening tag for placeholder}
+
+\item{ps_ph_end_tag}{closing tag for placeholder}
 }
 \description{
-The skeleton.Rmd template files contain placeholders which are to be
-replaced by the values given in the list pl_repl_values.
-}
-\examples{
-\dontrun{
-tmpdir <- tempdir()
-s_skeleton_path <- system.file("rmarkdown", "templates", "qemptydoc", "skeleton", "skeleton.Rmd", package = "qrmdtmpl")
-s_skeleton_file <- basename(s_skeleton_path)
-file.copy(from = s_skeleton_path, to = tmpdir)
-s_trg_path <- file.path(tmpdir, s_skeleton_file)
-qrmdtmpl:::sub_pattern_replacement(ps_path = s_trg_path,
-                        pl_repl_values = list(author = "Peter von Rohr",
-                                              title  = "A New Rmarkdown Document",
-                                              output_format = "html_document"))
-vec_doc <- readLines(con = file(s_trg_path))
-cat(paste0(vec_doc, collapse = "\n"), "\n")
-file.remove(s_trg_path)
-unlink(tmpdir)
-}
+Replacement of Placeholders
 }
