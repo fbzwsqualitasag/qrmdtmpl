@@ -322,8 +322,6 @@ draft_qtufte <- function(ps_path,
 #' Wrapper to create bookdown pdf document using \code{rmarkdown::draft}.
 #'
 #' @param ps_path path to newly created document
-#' @param ps_template template to be used
-#' @param ps_package package where template is stored
 #' @param ps_create_dir option whether to create new directory for new document
 #' @param pb_open whether document should be opened
 #' @param pl_repl_value list with pattern replacement values
@@ -335,19 +333,18 @@ draft_qtufte <- function(ps_path,
 #' draft_qbdpdf2(ps_path = "example_bdpdf2")
 #' }
 draft_qbdpdf2 <- function(ps_path,
-                          ps_template    = "qbdpdf2",
-                          ps_package     = "qrmdtmpl",
                           ps_create_dir  = "default",
                           pb_open        = rlang::is_interactive(),
-                          pl_repl_value = NULL){
+                          pl_repl_value  = NULL){
   # call generic draft wrapper
-  generic_rmd_draft <- function(ps_path        = ps_path,
-                                ps_template    = ps_template,
-                                ps_package     = ps_package,
-                                ps_create_dir  = ps_create_dir,
-                                pb_open        = pb_open,
-                                pl_repl_value = pl_repl_value)
-    return(invisible(NULL))
+  generic_rmd_draft(ps_path        = ps_path,
+                    ps_template    = "qbdpdf2",
+                    ps_package     = "qrmdtmpl",
+                    ps_create_dir  = ps_create_dir,
+                    pb_open        = pb_open,
+                    pl_repl_value  = pl_repl_value)
+
+
 }
 
 

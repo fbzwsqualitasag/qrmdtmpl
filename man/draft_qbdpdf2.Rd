@@ -6,8 +6,6 @@
 \usage{
 draft_qbdpdf2(
   ps_path,
-  ps_template = "qbdpdf2",
-  ps_package = "qrmdtmpl",
   ps_create_dir = "default",
   pb_open = rlang::is_interactive(),
   pl_repl_value = NULL
@@ -15,10 +13,6 @@ draft_qbdpdf2(
 }
 \arguments{
 \item{ps_path}{path to newly created document}
-
-\item{ps_template}{template to be used}
-
-\item{ps_package}{package where template is stored}
 
 \item{ps_create_dir}{option whether to create new directory for new document}
 
