@@ -167,12 +167,12 @@ merge_list_to_default <- function(pl_base, pl_default){
 #' @title Replacement of Placeholders
 #'
 #' @param ps_path Path with template text
-#' @param pl_repl_values list of placeholder replacement values
+#' @param pl_repl_value list of placeholder replacement values
 #' @param ps_ph_open_tag opening tag for placeholder
 #' @param ps_ph_end_tag closing tag for placeholder
 #'
 sub_pattern_replacement <- function(ps_path,
-                                    pl_repl_values,
+                                    pl_repl_value,
                                     ps_ph_open_tag = "<ph>",
                                     ps_ph_end_tag = "</ph>"){
   # read the text from ps_path

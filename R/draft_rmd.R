@@ -12,14 +12,14 @@
 #' @param ps_package package containing the template
 #' @param ps_create_dir flag whether document should be put into new directory
 #' @param pb_open flag whether to open the newly created document in rstudio
-#' @param pl_repl_values list of template placeholder replacement values
+#' @param pl_repl_value list of template placeholder replacement values
 #'
 generic_rmd_draft <- function(ps_path,
                               ps_template,
                               ps_package,
                               ps_create_dir,
                               pb_open,
-                              pl_repl_values){
+                              pl_repl_value){
   # remove any file extensions
   s_path <- tools::file_path_sans_ext(ps_path)
   # use the draft function of rmarkdown
@@ -44,12 +44,12 @@ generic_rmd_draft <- function(ps_path,
 
   # substitute placeholers with values
   l_default_repl_values <- get_generic_replacement_values()
-  if (is.null(pl_repl_values)){
+  if (is.null(pl_repl_value)){
     l_repl_values <- l_default_repl_values
   } else {
-    l_repl_values <- merge_list_to_default(pl_base = pl_repl_values, pl_default = l_default_repl_values)
+    l_repl_values <- merge_list_to_default(pl_base = pl_repl_value, pl_default = l_default_repl_values)
   }
-  sub_pattern_replacement(ps_path = s_path, pl_repl_values = l_repl_values)
+  sub_pattern_replacement(ps_path = s_path, pl_repl_value = l_repl_value)
 
   # open the file, if specified
   if (pb_open) {
@@ -78,7 +78,7 @@ generic_rmd_draft <- function(ps_path,
 #' @param ps_package package which contains the template
 #' @param ps_create_dir specify whether to create a new directory
 #' @param pb_open open the created file in rstudio editor
-#' @param pl_repl_values list with values to replace placeholders
+#' @param pl_repl_value list with values to replace placeholders
 #'
 #' @return invisible(TRUE)
 #'
@@ -92,14 +92,14 @@ draft_qemptydoc <- function(ps_path,
                             ps_package     = 'qrmdtmpl',
                             ps_create_dir  = "default",
                             pb_open        = rlang::is_interactive(),
-                            pl_repl_values = NULL){
+                            pl_repl_value = NULL){
   # call generic draft wrapper
   generic_rmd_draft <- function(ps_path        = ps_path,
                                 ps_template    = ps_template,
                                 ps_package     = ps_package,
                                 ps_create_dir  = ps_create_dir,
                                 pb_open        = pb_open,
-                                pl_repl_values = pl_repl_values)
+                                pl_repl_value = pl_repl_value)
     return(invisible(NULL))
 }
 
@@ -120,7 +120,7 @@ draft_qemptydoc <- function(ps_path,
 #' @param ps_package package which contains the template
 #' @param ps_create_dir specify whether to create a new directory
 #' @param pb_open open the created file in rstudio editor
-#' @param pl_repl_values list with values to replace placeholders
+#' @param pl_repl_value list with values to replace placeholders
 #'
 #' @return invisible(TRUE)
 #'
@@ -134,14 +134,14 @@ draft_qgenericdoc <- function(ps_path,
                               ps_package    = 'qrmdtmpl',
                               ps_create_dir = "default",
                               pb_open       = rlang::is_interactive(),
-                              pl_repl_values = NULL){
+                              pl_repl_value = NULL){
   # call generic draft wrapper
   generic_rmd_draft <- function(ps_path        = ps_path,
                                 ps_template    = ps_template,
                                 ps_package     = ps_package,
                                 ps_create_dir  = ps_create_dir,
                                 pb_open        = pb_open,
-                                pl_repl_values = pl_repl_values)
+                                pl_repl_value = pl_repl_value)
     return(invisible(NULL))
 }
 
@@ -162,7 +162,7 @@ draft_qgenericdoc <- function(ps_path,
 #' @param ps_package package which contains the template
 #' @param ps_create_dir specify whether to create a new directory
 #' @param pb_open open the created file in rstudio editor
-#' @param pl_repl_values list with values to replace placeholders
+#' @param pl_repl_value list with values to replace placeholders
 #'
 #' @return invisible(TRUE)
 #'
@@ -176,14 +176,14 @@ draft_quagprojectreport <- function(ps_path,
                                  ps_package    = 'qrmdtmpl',
                                  ps_create_dir = "default",
                                  pb_open       = rlang::is_interactive(),
-                                 pl_repl_values = NULL){
+                                 pl_repl_value = NULL){
   # call generic draft wrapper
   generic_rmd_draft <- function(ps_path        = ps_path,
                                 ps_template    = ps_template,
                                 ps_package     = ps_package,
                                 ps_create_dir  = ps_create_dir,
                                 pb_open        = pb_open,
-                                pl_repl_values = pl_repl_values)
+                                pl_repl_value = pl_repl_value)
     return(invisible(NULL))
 }
 
@@ -204,7 +204,7 @@ draft_quagprojectreport <- function(ps_path,
 #' @param ps_package package which contains the template
 #' @param ps_create_dir specify whether to create a new directory
 #' @param pb_open open the created file in rstudio editor
-#' @param pl_repl_values list with values to replace placeholders
+#' @param pl_repl_value list with values to replace placeholders
 #'
 #' @return invisible(NULL)
 #'
@@ -218,14 +218,14 @@ draft_qprojektreport <- function(ps_path,
                                  ps_package    = 'qrmdtmpl',
                                  ps_create_dir = "default",
                                  pb_open       = rlang::is_interactive(),
-                                 pl_repl_values = NULL){
+                                 pl_repl_value = NULL){
   # call generic draft wrapper
   generic_rmd_draft <- function(ps_path        = ps_path,
                                 ps_template    = ps_template,
                                 ps_package     = ps_package,
                                 ps_create_dir  = ps_create_dir,
                                 pb_open        = pb_open,
-                                pl_repl_values = pl_repl_values)
+                                pl_repl_value = pl_repl_value)
     return(invisible(NULL))
 }
 
@@ -247,7 +247,7 @@ draft_qprojektreport <- function(ps_path,
 #' @param ps_package package which contains the template
 #' @param ps_create_dir specify whether to create a new directory
 #' @param pb_open open the created file in rstudio editor
-#' @param pl_repl_values list with values to replace placeholders
+#' @param pl_repl_value list with values to replace placeholders
 #'
 #' @examples
 #' \dontrun{
@@ -260,14 +260,14 @@ draft_qbeamerslides <- function(ps_path,
                                    ps_package     = 'qrmdtmpl',
                                    ps_create_dir  = "default",
                                    pb_open        = rlang::is_interactive(),
-                                   pl_repl_values = NULL){
+                                   pl_repl_value = NULL){
   # call generic draft wrapper
   generic_rmd_draft <- function(ps_path        = ps_path,
                                 ps_template    = ps_template,
                                 ps_package     = ps_package,
                                 ps_create_dir  = ps_create_dir,
                                 pb_open        = pb_open,
-                                pl_repl_values = pl_repl_values)
+                                pl_repl_value = pl_repl_value)
     return(invisible(NULL))
 }
 
@@ -288,7 +288,7 @@ draft_qbeamerslides <- function(ps_path,
 #' @param ps_package package which contains the template
 #' @param ps_create_dir specify whether to create a new directory
 #' @param pb_open open the created file in rstudio editor
-#' @param pl_repl_values list with values to replace placeholders
+#' @param pl_repl_value list with values to replace placeholders
 #'
 #' @export draft_qtufte
 #'
@@ -301,14 +301,14 @@ draft_qtufte <- function(ps_path,
                           ps_package     = "qrmdtmpl",
                           ps_create_dir  = "default",
                           pb_open        = rlang::is_interactive(),
-                          pl_repl_values = NULL){
+                          pl_repl_value = NULL){
   # call generic draft wrapper
   generic_rmd_draft <- function(ps_path        = ps_path,
                                 ps_template    = ps_template,
                                 ps_package     = ps_package,
                                 ps_create_dir  = ps_create_dir,
                                 pb_open        = pb_open,
-                                pl_repl_values = pl_repl_values)
+                                pl_repl_value = pl_repl_value)
     return(invisible(NULL))
 }
 
@@ -326,7 +326,7 @@ draft_qtufte <- function(ps_path,
 #' @param ps_package package where template is stored
 #' @param ps_create_dir option whether to create new directory for new document
 #' @param pb_open whether document should be opened
-#' @param pl_repl_values list with pattern replacement values
+#' @param pl_repl_value list with pattern replacement values
 #'
 #' @export draft_qbdpdf2
 #'
@@ -339,14 +339,14 @@ draft_qbdpdf2 <- function(ps_path,
                           ps_package     = "qrmdtmpl",
                           ps_create_dir  = "default",
                           pb_open        = rlang::is_interactive(),
-                          pl_repl_values = NULL){
+                          pl_repl_value = NULL){
   # call generic draft wrapper
   generic_rmd_draft <- function(ps_path        = ps_path,
                                 ps_template    = ps_template,
                                 ps_package     = ps_package,
                                 ps_create_dir  = ps_create_dir,
                                 pb_open        = pb_open,
-                                pl_repl_values = pl_repl_values)
+                                pl_repl_value = pl_repl_value)
     return(invisible(NULL))
 }
 
