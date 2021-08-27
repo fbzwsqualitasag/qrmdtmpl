@@ -6,8 +6,6 @@
 \usage{
 draft_qbeamerslides(
   ps_path,
-  ps_template = "quagbeamer",
-  ps_package = "qrmdtmpl",
   ps_create_dir = "default",
   pb_open = rlang::is_interactive(),
   pl_repl_value = NULL
@@ -15,10 +13,6 @@ draft_qbeamerslides(
 }
 \arguments{
 \item{ps_path}{path to the document to be created}
-
-\item{ps_template}{name of the tempalte}
-
-\item{ps_package}{package which contains the template}
 
 \item{ps_create_dir}{specify whether to create a new directory}
 
