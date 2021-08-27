@@ -1,13 +1,14 @@
 library(qrmdtmpl)
+draft_qbdpdf2(ps_path = s_path,
+              pb_open = FALSE,
+              pl_repl_value = list(title = "Example Bookdown PDF2 Document",
+                                   author = "Peter von Rohr",
+                                   date   = "2021-08-27"))
 
 test_that("draft qbookdown pdf_document2", {
   s_file <- "example_qpdpdf2"
   s_path <- file.path(tempdir(), s_file)
-  draft_qbdpdf2(ps_path = s_path,
-                pb_open = FALSE,
-                pl_repl_value = list(title = "Example Bookdown PDF2 Document",
-                                     author = "Peter von Rohr",
-                                     date   = "2021-08-27"))
+
   # read generated document
   s_qbdpdf2_path <- file.path(s_path, paste0(s_file, ".Rmd"))
   con_qbdpdf2 <- file(description = s_qbdpdf2_path)
