@@ -73,3 +73,22 @@ qrmdtmpl::draft_qprojectreport(ps_path = '20210216_test_report_with_rmd.Rmd')
 
 ```
 
+
+# Placeholders in Templates
+A number of placeholders were introduced into the document templates. These placeholders can be replaced by specific values when creating a new document. Placeholders are mainly used in the yaml header of the documents. The place holders are surrounded by a starting tag (`<ph>`) and an end tag (`</ph>`). The placeholders include 
+
+* title of the document (`<ph>title</ph>`)
+* author of the document (`<ph>author</ph>`)
+* date of creation (`<ph>date</ph>`)
+* output format (`<ph>output_format</ph>`)
+
+The values to be inserted at the position of the placeholders can be specified by the argument `pl_repl_value` which expects a list with the names that correpsond to the placeholder names between the start and end tags. A possible call to create a project report might then look as follows
+
+```{r echo=TRUE, eval=FALSE}
+qrmdtmpl::draft_quagprojectreport(ps_path = "example_quagprojectreport",
+                                  pl_repl_value = list(title = "Example Project Report",
+                                                       author = "Peter von Rohr",
+                                                       date   = "2021-08-27",
+                                                       output_format = "pdf_document"))
+```
+
