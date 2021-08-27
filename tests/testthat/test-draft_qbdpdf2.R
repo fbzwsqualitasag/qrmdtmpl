@@ -1,4 +1,3 @@
-context("Document Draft")
 library(qrmdtmpl)
 
 test_that("draft qbookdown pdf_document2", {
