@@ -74,8 +74,6 @@ generic_rmd_draft <- function(ps_path,
 #' The template 'qemptydoc' is taken from this package 'qrmdtmpl'.
 #'
 #' @param ps_path path to the document to be created
-#' @param ps_template name of the tempalte
-#' @param ps_package package which contains the template
 #' @param ps_create_dir specify whether to create a new directory
 #' @param pb_open open the created file in rstudio editor
 #' @param pl_repl_value list with values to replace placeholders
@@ -88,18 +86,16 @@ generic_rmd_draft <- function(ps_path,
 #' }
 #' @export draft_qemptydoc
 draft_qemptydoc <- function(ps_path,
-                            ps_template    = 'qemptydoc',
-                            ps_package     = 'qrmdtmpl',
-                            ps_create_dir  = "default",
-                            pb_open        = rlang::is_interactive(),
+                            ps_create_dir = "default",
+                            pb_open       = rlang::is_interactive(),
                             pl_repl_value = NULL){
   # call generic draft wrapper
-  generic_rmd_draft <- function(ps_path        = ps_path,
-                                ps_template    = ps_template,
-                                ps_package     = ps_package,
-                                ps_create_dir  = ps_create_dir,
-                                pb_open        = pb_open,
-                                pl_repl_value = pl_repl_value)
+  generic_rmd_draft(ps_path       = ps_path,
+                    ps_template   = "qemptydoc",
+                    ps_package    = "qrmdtmpl",
+                    ps_create_dir = ps_create_dir,
+                    pb_open       = pb_open,
+                    pl_repl_value = pl_repl_value)
     return(invisible(NULL))
 }
 
@@ -116,8 +112,6 @@ draft_qemptydoc <- function(ps_path,
 #' The template 'qemptydoc' is taken from this package 'qrmdtmpl'.
 #'
 #' @param ps_path path to the document to be created
-#' @param ps_template name of the tempalte
-#' @param ps_package package which contains the template
 #' @param ps_create_dir specify whether to create a new directory
 #' @param pb_open open the created file in rstudio editor
 #' @param pl_repl_value list with values to replace placeholders
@@ -130,18 +124,16 @@ draft_qemptydoc <- function(ps_path,
 #' }
 #' @export draft_qgenericdoc
 draft_qgenericdoc <- function(ps_path,
-                              ps_template   = 'qgenericdoc',
-                              ps_package    = 'qrmdtmpl',
                               ps_create_dir = "default",
                               pb_open       = rlang::is_interactive(),
                               pl_repl_value = NULL){
   # call generic draft wrapper
-  generic_rmd_draft <- function(ps_path        = ps_path,
-                                ps_template    = ps_template,
-                                ps_package     = ps_package,
-                                ps_create_dir  = ps_create_dir,
-                                pb_open        = pb_open,
-                                pl_repl_value = pl_repl_value)
+  generic_rmd_draft(ps_path       = ps_path,
+                    ps_template   = "qgenericdoc",
+                    ps_package    = "qrmdtmpl",
+                    ps_create_dir = ps_create_dir,
+                    pb_open       = pb_open,
+                    pl_repl_value = pl_repl_value)
     return(invisible(NULL))
 }
 
@@ -158,8 +150,6 @@ draft_qgenericdoc <- function(ps_path,
 #' The template 'quagprojectreport' is taken from this package 'qrmdtmpl'.
 #'
 #' @param ps_path path to the document to be created
-#' @param ps_template name of the tempalte
-#' @param ps_package package which contains the template
 #' @param ps_create_dir specify whether to create a new directory
 #' @param pb_open open the created file in rstudio editor
 #' @param pl_repl_value list with values to replace placeholders
@@ -172,18 +162,16 @@ draft_qgenericdoc <- function(ps_path,
 #' }
 #' @export draft_quagprojectreport
 draft_quagprojectreport <- function(ps_path,
-                                 ps_template   = 'quagprojectreport',
-                                 ps_package    = 'qrmdtmpl',
-                                 ps_create_dir = "default",
-                                 pb_open       = rlang::is_interactive(),
-                                 pl_repl_value = NULL){
+                                    ps_create_dir = "default",
+                                    pb_open       = rlang::is_interactive(),
+                                    pl_repl_value = NULL){
   # call generic draft wrapper
-  generic_rmd_draft <- function(ps_path        = ps_path,
-                                ps_template    = ps_template,
-                                ps_package     = ps_package,
-                                ps_create_dir  = ps_create_dir,
-                                pb_open        = pb_open,
-                                pl_repl_value = pl_repl_value)
+  generic_rmd_draft(ps_path       = ps_path,
+                    ps_template   = "quagprojectreport",
+                    ps_package    = "qrmdtmpl",
+                    ps_create_dir = ps_create_dir,
+                    pb_open       = pb_open,
+                    pl_repl_value = pl_repl_value)
     return(invisible(NULL))
 }
 
@@ -200,8 +188,6 @@ draft_quagprojectreport <- function(ps_path,
 #' The template 'qprojektreport' is taken from this package 'qrmdtmpl'.
 #'
 #' @param ps_path path to the document to be created
-#' @param ps_template name of the tempalte
-#' @param ps_package package which contains the template
 #' @param ps_create_dir specify whether to create a new directory
 #' @param pb_open open the created file in rstudio editor
 #' @param pl_repl_value list with values to replace placeholders
@@ -214,18 +200,16 @@ draft_quagprojectreport <- function(ps_path,
 #' }
 #' @export draft_qprojektreport
 draft_qprojektreport <- function(ps_path,
-                                 ps_template   = 'qprojektreport',
-                                 ps_package    = 'qrmdtmpl',
                                  ps_create_dir = "default",
                                  pb_open       = rlang::is_interactive(),
                                  pl_repl_value = NULL){
   # call generic draft wrapper
-  generic_rmd_draft <- function(ps_path        = ps_path,
-                                ps_template    = ps_template,
-                                ps_package     = ps_package,
-                                ps_create_dir  = ps_create_dir,
-                                pb_open        = pb_open,
-                                pl_repl_value = pl_repl_value)
+  generic_rmd_draft(ps_path       = ps_path,
+                    ps_template   = "qprojektreport",
+                    ps_package    = "qrmdtmpl",
+                    ps_create_dir = ps_create_dir,
+                    pb_open       = pb_open,
+                    pl_repl_value = pl_repl_value)
     return(invisible(NULL))
 }
 
@@ -243,8 +227,6 @@ draft_qprojektreport <- function(ps_path,
 #' The template quagbeamer is taken from this package qrmdtmpl.
 #'
 #' @param ps_path path to the document to be created
-#' @param ps_template name of the tempalte
-#' @param ps_package package which contains the template
 #' @param ps_create_dir specify whether to create a new directory
 #' @param pb_open open the created file in rstudio editor
 #' @param pl_repl_value list with values to replace placeholders
@@ -256,18 +238,16 @@ draft_qprojektreport <- function(ps_path,
 #'
 #' @export draft_qbeamerslides
 draft_qbeamerslides <- function(ps_path,
-                                   ps_template    = 'quagbeamer',
-                                   ps_package     = 'qrmdtmpl',
-                                   ps_create_dir  = "default",
-                                   pb_open        = rlang::is_interactive(),
-                                   pl_repl_value = NULL){
+                                ps_create_dir = "default",
+                                pb_open       = rlang::is_interactive(),
+                                pl_repl_value = NULL){
   # call generic draft wrapper
-  generic_rmd_draft <- function(ps_path        = ps_path,
-                                ps_template    = ps_template,
-                                ps_package     = ps_package,
-                                ps_create_dir  = ps_create_dir,
-                                pb_open        = pb_open,
-                                pl_repl_value = pl_repl_value)
+  generic_rmd_draft(ps_path       = ps_path,
+                    ps_template   = "quagbeamer",
+                    ps_package    = "qrmdtmpl",
+                    ps_create_dir = ps_create_dir,
+                    pb_open       = pb_open,
+                    pl_repl_value = pl_repl_value)
     return(invisible(NULL))
 }
 
