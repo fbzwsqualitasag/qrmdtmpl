@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Changelog • qrmdtmpl</title>
+<title>Create Bookdown PDF Document — draft_qbdpdf2 • qrmdtmpl</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,8 @@
 
 
 
-<meta property="og:title" content="Changelog" />
+<meta property="og:title" content="Create Bookdown PDF Document — draft_qbdpdf2" />
+<meta property="og:description" content="Wrapper to create bookdown pdf document using rmarkdown::draft." />
 
 
 
@@ -58,7 +59,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -125,47 +126,54 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1 data-toc-skip>Changelog <small></small></h1>
-      <small>Source: <a href='https://github.com/fbzwsqualitasag/qrmdtmpl/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
+    <h1>Create Bookdown PDF Document</h1>
+    <small class="dont-index">Source: <a href='https://github.com/fbzwsqualitasag/qrmdtmpl/blob/master/R/draft_rmd.R'><code>R/draft_rmd.R</code></a></small>
+    <div class="hidden name"><code>draft_qbdpdf2.Rd</code></div>
     </div>
 
-    <div id="qrmdtmpl-004" class="section level1">
-<h1 class="page-header" data-toc-text="0.0.4">
-<a href="#qrmdtmpl-004" class="anchor"></a>qrmdtmpl 0.0.4</h1>
-<ul>
-<li>Refactored common parts of document creation into a generic function and changed all format-specific functions into wrappers around the generic draft function.</li>
-<li>Changed placeholder replacement from glue to stringr which seams more flexible. Placeholders are now surrounded by start and end tags to avoid confusion with markdown characters.</li>
-</ul>
-</div>
-    <div id="qrmdtmpl-003" class="section level1">
-<h1 class="page-header" data-toc-text="0.0.3">
-<a href="#qrmdtmpl-003" class="anchor"></a>qrmdtmpl 0.0.3</h1>
-<ul>
-<li>Introduced placeholders into template skeleton files and draft-functions can now replace placeholders with actual values</li>
-</ul>
-</div>
-    <div id="qrmdtmpl-002" class="section level1">
-<h1 class="page-header" data-toc-text="0.0.2">
-<a href="#qrmdtmpl-002" class="anchor"></a>qrmdtmpl 0.0.2</h1>
-<ul>
-<li>Corrected package name in default settings of function parameters</li>
-</ul>
-</div>
-    <div id="qrmdtmpl-001" class="section level1">
-<h1 class="page-header" data-toc-text="0.0.1">
-<a href="#qrmdtmpl-001" class="anchor"></a>qrmdtmpl 0.0.1</h1>
-<ul>
-<li>Added a <code>NEWS.md</code> file to track changes to the package.</li>
-</ul>
-</div>
-  </div>
+    <div class="ref-description">
+    <p>Wrapper to create bookdown pdf document using <code><a href='https://pkgs.rstudio.com/rmarkdown/reference/draft.html'>rmarkdown::draft</a></code>.</p>
+    </div>
 
+    <pre class="usage"><span class='fu'>draft_qbdpdf2</span>(
+  <span class='no'>ps_path</span>,
+  <span class='kw'>ps_create_dir</span> <span class='kw'>=</span> <span class='st'>"default"</span>,
+  <span class='kw'>pb_open</span> <span class='kw'>=</span> <span class='kw pkg'>rlang</span><span class='kw ns'>::</span><span class='fu'><a href='https://rlang.r-lib.org/reference/is_interactive.html'>is_interactive</a></span>(),
+  <span class='kw'>pl_repl_value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)</pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>ps_path</th>
+      <td><p>path to newly created document</p></td>
+    </tr>
+    <tr>
+      <th>ps_create_dir</th>
+      <td><p>option whether to create new directory for new document</p></td>
+    </tr>
+    <tr>
+      <th>pb_open</th>
+      <td><p>whether document should be opened</p></td>
+    </tr>
+    <tr>
+      <th>pl_repl_value</th>
+      <td><p>list with pattern replacement values</p></td>
+    </tr>
+    </table>
+
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>{
+<span class='fu'>draft_qbdpdf2</span>(<span class='kw'>ps_path</span> <span class='kw'>=</span> <span class='st'>"example_bdpdf2"</span>)
+}</div><div class='output co'>#&gt; <span class='error'>Error in rmarkdown::draft(file = s_path, template = ps_template, package = ps_package,     create_dir = ps_create_dir, edit = FALSE): The directory 'example_bdpdf2' already exists.</span></div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
-
 </div>
 
 

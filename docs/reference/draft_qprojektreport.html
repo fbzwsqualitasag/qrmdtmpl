@@ -73,7 +73,7 @@ report document in German. The document includes the logo on the title page." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">qrmdtmpl</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4</span>
       </span>
     </div>
 
@@ -139,11 +139,9 @@ report document in German. The document includes the logo on the title page.</p>
 
     <pre class="usage"><span class='fu'>draft_qprojektreport</span>(
   <span class='no'>ps_path</span>,
-  <span class='kw'>ps_template</span> <span class='kw'>=</span> <span class='st'>"qprojektreport"</span>,
-  <span class='kw'>ps_package</span> <span class='kw'>=</span> <span class='st'>"qrmdtmpl"</span>,
   <span class='kw'>ps_create_dir</span> <span class='kw'>=</span> <span class='st'>"default"</span>,
-  <span class='kw'>pb_edit</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>pb_open</span> <span class='kw'>=</span> <span class='kw pkg'>rlang</span><span class='kw ns'>::</span><span class='fu'><a href='https://rlang.r-lib.org/reference/is_interactive.html'>is_interactive</a></span>()
+  <span class='kw'>pb_open</span> <span class='kw'>=</span> <span class='kw pkg'>rlang</span><span class='kw ns'>::</span><span class='fu'><a href='https://rlang.r-lib.org/reference/is_interactive.html'>is_interactive</a></span>(),
+  <span class='kw'>pl_repl_value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -154,30 +152,22 @@ report document in German. The document includes the logo on the title page.</p>
       <td><p>path to the document to be created</p></td>
     </tr>
     <tr>
-      <th>ps_template</th>
-      <td><p>name of the tempalte</p></td>
-    </tr>
-    <tr>
-      <th>ps_package</th>
-      <td><p>package which contains the template</p></td>
-    </tr>
-    <tr>
       <th>ps_create_dir</th>
       <td><p>specify whether to create a new directory</p></td>
-    </tr>
-    <tr>
-      <th>pb_edit</th>
-      <td><p>flag whether newly created file should be edited</p></td>
     </tr>
     <tr>
       <th>pb_open</th>
       <td><p>open the created file in rstudio editor</p></td>
     </tr>
+    <tr>
+      <th>pl_repl_value</th>
+      <td><p>list with values to replace placeholders</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>invisible(TRUE)</p>
+    <p>invisible(NULL)</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The template 'qprojektreport' is taken from this package 'qrmdtmpl'.</p>

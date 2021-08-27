@@ -1,0 +1,24 @@
+---
+title: Document Title
+author: pvr
+date: 2021-08-27
+output: bookdown::pdf_document2
+bibliography: bibliography.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# hook for graphics
+# rmdhelp::show_knit_hook_call()
+knitr::knit_hooks$set(hook_convert_odg = rmdhelp::hook_convert_odg)
+# initialise mendeley reference object
+met <- rmdhelp::MendeleyExportToolR6$new()
+met$set_this_rmd_file(ps_this_rmd_file = ifelse(rstudioapi::isAvailable(),
+                              rstudioapi::getActiveDocumentContext()$path,
+                              whereami::thisfile()))
+```
+
+# Disclaimer
+
+
+# References

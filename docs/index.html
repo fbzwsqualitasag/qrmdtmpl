@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">qrmdtmpl</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4</span>
       </span>
     </div>
 
@@ -103,7 +103,11 @@
 <p>This is a basic example which shows you how to solve a common problem:</p>
 <div class="sourceCode" id="cb2"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">qrmdtmpl</span>)
 <span class="co">## basic example code</span>
-<span class="kw pkg">rmarkdown</span><span class="kw ns">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/draft.html">draft</a></span>(<span class="kw">file</span> <span class="kw">=</span> <span class="st">'report1'</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">'qrmdtmpl'</span>, <span class="kw">template</span> <span class="kw">=</span> <span class="st">'quagprojectreport'</span>, <span class="kw">create_dir</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></div>
+<span class="fu"><a href="reference/draft_quagprojectreport.html">draft_quagprojectreport</a></span>(<span class="kw">ps_path</span> <span class="kw">=</span> <span class="st">"example_quagprojectreport"</span>,
+                        <span class="kw">pl_repl_value</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">title</span> <span class="kw">=</span> <span class="st">"Example Project Report"</span>,
+                                             <span class="kw">author</span> <span class="kw">=</span> <span class="st">"Peter von Rohr"</span>,
+                                             <span class="kw">date</span>   <span class="kw">=</span> <span class="st">"2021-08-27"</span>,
+                                             <span class="kw">output_format</span> <span class="kw">=</span> <span class="st">"pdf_document"</span>))</pre></div>
 </div>
 </div>
   </div>

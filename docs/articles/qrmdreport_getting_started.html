@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">qrmdtmpl</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.4</span>
       </span>
     </div>
 
@@ -139,6 +139,23 @@
 <span class="co"># report</span>
 <span class="kw pkg">qrmdtmpl</span><span class="kw ns">::</span><span class="fu">draft_qprojectreport</span>(<span class="kw">ps_path</span> <span class="kw">=</span> <span class="st">'20210216_test_report_no_rmd'</span>)
 <span class="kw pkg">qrmdtmpl</span><span class="kw ns">::</span><span class="fu">draft_qprojectreport</span>(<span class="kw">ps_path</span> <span class="kw">=</span> <span class="st">'20210216_test_report_with_rmd.Rmd'</span>)</pre></body></html></div>
+</div>
+<div id="placeholders-in-templates" class="section level1">
+<h1 class="hasAnchor">
+<a href="#placeholders-in-templates" class="anchor"></a>Placeholders in Templates</h1>
+<p>A number of placeholders were introduced into the document templates. These placeholders can be replaced by specific values when creating a new document. Placeholders are mainly used in the yaml header of the documents. The place holders are surrounded by a starting tag (<code>&lt;ph&gt;</code>) and an end tag (<code>&lt;/ph&gt;</code>). The placeholders include</p>
+<ul>
+<li>title of the document (<code>&lt;ph&gt;title&lt;/ph&gt;</code>)</li>
+<li>author of the document (<code>&lt;ph&gt;author&lt;/ph&gt;</code>)</li>
+<li>date of creation (<code>&lt;ph&gt;date&lt;/ph&gt;</code>)</li>
+<li>output format (<code>&lt;ph&gt;output_format&lt;/ph&gt;</code>)</li>
+</ul>
+<p>The values to be inserted at the position of the placeholders can be specified by the argument <code>pl_repl_value</code> which expects a list with the names that correpsond to the placeholder names between the start and end tags. A possible call to create a project report might then look as follows</p>
+<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="kw pkg">qrmdtmpl</span><span class="kw ns">::</span><span class="fu"><a href="../reference/draft_quagprojectreport.html">draft_quagprojectreport</a></span>(<span class="kw">ps_path</span> <span class="kw">=</span> <span class="st">"example_quagprojectreport"</span>,
+                                  <span class="kw">pl_repl_value</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">title</span> <span class="kw">=</span> <span class="st">"Example Project Report"</span>,
+                                                       <span class="kw">author</span> <span class="kw">=</span> <span class="st">"Peter von Rohr"</span>,
+                                                       <span class="kw">date</span>   <span class="kw">=</span> <span class="st">"2021-08-27"</span>,
+                                                       <span class="kw">output_format</span> <span class="kw">=</span> <span class="st">"pdf_document"</span>))</pre></body></html></div>
 </div>
   </div>
 
