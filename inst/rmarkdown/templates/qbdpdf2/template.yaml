@@ -1,0 +1,4 @@
+name: Bookdown PDF Document
+description: >
+   Bookdown PDF Document
+create_dir: TRUE

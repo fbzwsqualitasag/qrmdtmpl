@@ -9,7 +9,6 @@ draft_qtufte(
   ps_template = "qtufte",
   ps_package = "qrmdtmpl",
   ps_create_dir = "default",
-  pb_edit = FALSE,
   pb_open = rlang::is_interactive(),
   pl_repl_values = NULL
 )
@@ -22,8 +21,6 @@ draft_qtufte(
 \item{ps_package}{package which contains the template}
 
 \item{ps_create_dir}{specify whether to create a new directory}
-
-\item{pb_edit}{flag whether newly created file should be edited}
 
 \item{pb_open}{open the created file in rstudio editor}
 
@@ -38,6 +35,6 @@ The used RMarkdown template qtufte is taken from this package qrmdtmpl.
 }
 \examples{
 \dontrun{
-draft_qtuftey(ps_path = "qtufte_report")
+draft_qtufte(ps_path = "qtufte_report")
 }
 }

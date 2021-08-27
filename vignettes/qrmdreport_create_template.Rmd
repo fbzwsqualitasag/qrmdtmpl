@@ -76,3 +76,14 @@ usethis::use_rmarkdown_template(template_name = "Tufte Report Skeleton",
                                 template_create_dir = TRUE)
 ```
 
+
+## Bookdown pdf_document2
+ A pdf document with citation and references to titles, tables and equations is best created by the format `bookdown::pdf_document2`. 
+ 
+```{r, echo=TRUE, eval=FALSE}
+usethis::use_rmarkdown_template(template_name = "Bookdown PDF Document",
+                                template_dir = "qbdpdf2",
+                                template_description = "Bookdown PDF Document", 
+                                template_create_dir = TRUE)
+```
+ 

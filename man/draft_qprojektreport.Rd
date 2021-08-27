@@ -9,8 +9,8 @@ draft_qprojektreport(
   ps_template = "qprojektreport",
   ps_package = "qrmdtmpl",
   ps_create_dir = "default",
-  pb_edit = FALSE,
-  pb_open = rlang::is_interactive()
+  pb_open = rlang::is_interactive(),
+  pl_repl_values = NULL
 )
 }
 \arguments{
@@ -22,12 +22,12 @@ draft_qprojektreport(
 
 \item{ps_create_dir}{specify whether to create a new directory}
 
-\item{pb_edit}{flag whether newly created file should be edited}
-
 \item{pb_open}{open the created file in rstudio editor}
+
+\item{pl_repl_values}{list with values to replace placeholders}
 }
 \value{
-invisible(TRUE)
+invisible(NULL)
 }
 \description{
 Wrapper function for rmarkdown::draft to create a skeleton for a Qualitas AG
