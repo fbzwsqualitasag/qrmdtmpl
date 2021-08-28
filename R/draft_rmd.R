@@ -320,7 +320,7 @@ draft_qtufte <- function(ps_path,
 #' @export draft_qbdpdf2
 #'
 #' @examples
-#' \donotrun{
+#' \dontrun{
 #' draft_qbdpdf2(ps_path = "example_bdpdf2")
 #' }
 draft_qbdpdf2 <- function(ps_path,
