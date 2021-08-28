@@ -24,7 +24,7 @@ draft_qbdpdf2(
 Wrapper to create bookdown pdf document using \code{rmarkdown::draft}.
 }
 \examples{
-\donotrun{
+\dontrun{
 draft_qbdpdf2(ps_path = "example_bdpdf2")
 }
 }
