@@ -9,6 +9,7 @@ bibliography: "bibliography.bib"
 biblio-style: "apalike"
 link-citations: true
 header-includes:
+- \usepackage[ngerman]{babel}
 - \usepackage{xcolor}
 - \usepackage{lscape}  
 - \usepackage{titling}
