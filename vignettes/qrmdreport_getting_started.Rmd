@@ -28,6 +28,7 @@ The way how to use the package `qrmdtmpl` to produce project reports based on a 
 The first step is to install the package `qrmdtmpl`. 
 
 ```{r, eval=FALSE}
+# if (!is.element("remotes", installed.packages())) install.packages("remotes")
 remotes::install_github(repo = 'fbzwsqualitasag/qrmdtmpl')
 ```
 
@@ -84,11 +85,23 @@ A number of placeholders were introduced into the document templates. These plac
 
 The values to be inserted at the position of the placeholders can be specified by the argument `pl_repl_value` which expects a list with the names that correpsond to the placeholder names between the start and end tags. A possible call to create a project report might then look as follows
 
-```{r echo=TRUE, eval=FALSE}
+```{r, echo=TRUE, eval=FALSE}
 qrmdtmpl::draft_quagprojectreport(ps_path = "example_quagprojectreport",
                                   pl_repl_value = list(title = "Example Project Report",
                                                        author = "Peter von Rohr",
                                                        date   = "2021-08-27",
                                                        output_format = "pdf_document"))
 ```
+
+
+# Generate Example Reports
+To demonstrate the use of different templates, example documents can be generated. The following statement creates a German example report with the Qualitas AG Logo and with the document structure that seams to be common for this type of reports.
+
+```{r, echo=TRUE}
+tmprepdir <- tempdir()
+create_example_qprojektreport(ps_path = tmprepdir)
+unlink(tmprepdir, recursive = TRUE, force = TRUE)
+```
+
+The above example allows to inspect a more detailed RMarkdown sourcefile that shows how tables and diagrams are created and referenced. All the captions related to tables and diagrams are shown in German. This is possible because of the latex-package `babel` which is included in the document header included in the yaml-header section. 
 
