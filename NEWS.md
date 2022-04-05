@@ -1,3 +1,8 @@
+# qrmdtmpl 0.0.5
+
+* Changed qprojektreport to use German titles consistently by loading the German language from the latex-package "babel".
+
+
 # qrmdtmpl 0.0.4
 
 * Refactored common parts of document creation into a generic function and changed all format-specific functions into wrappers around the generic draft function. 
