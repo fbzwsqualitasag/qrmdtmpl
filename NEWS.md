@@ -1,7 +1,10 @@
+# qrmdtmpl 0.0.6
+
+* Excample for qprojekt_report can be generated using the creation function 'create_example_qprojektreport()'
+
 # qrmdtmpl 0.0.5
 
 * Changed qprojektreport to use German titles consistently by loading the German language from the latex-package "babel".
-
 
 # qrmdtmpl 0.0.4
 
