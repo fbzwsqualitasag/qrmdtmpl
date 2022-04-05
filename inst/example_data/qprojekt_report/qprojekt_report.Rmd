@@ -1,0 +1,148 @@
+---
+title: Bericht Zuchtwertschätzung Geburtsmerkmale
+author: Sophie Kunz
+date: 2022-04-05
+output:
+  bookdown::pdf_document2: 
+  output_format: default
+bibliography: "bibliography.bib"
+biblio-style: "apalike"
+link-citations: true
+header-includes:
+- \usepackage[ngerman]{babel}
+- \usepackage{xcolor}
+- \usepackage{lscape}  
+- \usepackage{titling}
+- \pretitle{\vspace{-2cm} \begin{center} \includegraphics[width=\linewidth]{logo/quag_logo.png}\LARGE\\}
+- \posttitle{\end{center}}
+- \newcommand{\blandscape}{\begin{landscape}}
+- \newcommand{\elandscape}{\end{landscape}}
+- \setlength{\voffset}{-0.5cm}
+- \setlength{\headsep}{5pt}
+- \renewcommand{\contentsname}{Inhalt}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+if (is.element("rmdhelp", installed.packages())) {
+  # instantiate a new MendeleyExportTool object
+  met <- rmdhelp::MendeleyExportToolR6$new()
+  # setting the current rmd-file
+  met$set_this_rmd_file(ps_this_rmd_file = ifelse(rstudioapi::isAvailable(),
+                                rstudioapi::getActiveDocumentContext()$path,
+                                whereami::thisfile()))
+  # diagram conversion
+  # rmdhelp::show_knit_hook_call()
+  knitr::knit_hooks$set(hook_convert_odg = rmdhelp::hook_convert_odg)
+}
+```
+
+\newpage
+
+# Erklärung
+Dieser Report ist ein Demonstrationsbeispiel, welches für die Dokumentation des R-Pakets 'qrmdtmpl' erstellt wurde. Dieser Bericht enthält nur gewisse Teile des vollständigen Berichts, welcher nicht öffentlich ist. Die gezeigten Daten wurden weitgehend anonymisiert.
+
+
+# Abkürzungen
+Tabelle \@ref(tab:tab-abbrev) listet alle verwendeten Abkürzungen auf.
+
+```{r tab-abbrev, echo=FALSE}
+tbl_abbrev <- tibble::tibble(`Abbkürzung` = c("GAdBeef",
+                                              "GAdDairy",
+                                              "GAmBeef",
+                                              "GGdBeef",
+                                              "GGdDairy",
+                                              "GGmBeef",
+                                              "TDdDairy"),
+                             Beschreibung = c("Geburtsablauf direkt Beef",
+                                              "Geburtsablauf direkt Dairy",
+                                              "Geburtsablauf maternal Beef",
+                                              "Geburtsgewicht direkt Beef",
+                                              "Geburtsgewicht direkt Dairy",
+                                              "Geburtsgewicht maternal Beef",
+                                              "Trächtigkeitsdauer direkt Dairy"))
+knitr::kable(tbl_abbrev,
+             booktabs = TRUE,
+             longtable = TRUE,
+             caption = "Liste der im Bericht verwendeten Abkürzungen")
+```
+
+
+
+# Kontext
+Hier folgt die Beschreibung, weshalb die Zuchtwertschätzung angepasst werden musste. Im Paper `r met$add("Mota2017")` wird ein ähnlichen Thema bearbeitet.
+
+
+# Merkmale
+
+
+# Daten
+
+## Datenplausibilisierung
+
+## Pedigree
+
+## Datenreduktion
+
+
+# Methode
+## Modell
+Die Effektkodierung der Altersquantil-Laktations-Interaktion wird mit Abbildung \@ref(fig:diagram-age-lact) erklärt.
+
+```{r diagram-age-lact, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="100%", fig.cap="Effektkodierung der Altersquantil-Laktations-Interaktion"}
+#rmdhelp::use_odg_graphic(ps_path = "odg/diagram-age-lact.odg")
+knitr::include_graphics(path = "odg/diagram-age-lact.png")
+```
+
+
+
+# Varianzkomponentenschätzung
+
+
+# Zuchtwertschätzung
+
+
+# Darstellung der Zuchtwerte
+
+
+# Resultate
+
+## Grösse der Datensätze
+
+## Abgangsfrequenzen
+
+## Heritabilitäten
+### Beef-Teil
+Tabelle \@ref(tab:tab-h2-corr-beef) fasst die Heritabilitäten (diagonal) und die genetischen Korrelation (off-diagonal) für die Geburtsmerkmale Beef zusammen.
+
+```{r tab-h2-corr-beef, echo=FALSE}
+tbl_h2_corr_beef <- tibble::tibble(Merkmal = c("GAdBeef", "GGdBeef", "GAmBeef", "GGmBeef"),
+                                   GAdBeef = c("0.000", rep("", 3)),
+                                   GGdBeef = c(rep("0.000",2), rep("",2)),
+                                   GAmBeef = c(rep("0.000", 3), ""),
+                                   GGmBeef = rep("0.000", 4))
+knitr::kable(tbl_h2_corr_beef,
+             booktabs = TRUE,
+             longtable = TRUE,
+             caption = "Heritabilitäten (diagonal) und genetische Korrelationen (off-diagonal) für Geburtsmerkmale Beef")
+```
+
+
+## Zuchtwerte
+
+### GA_BV
+
+### GA_RH
+
+
+# Diskussion
+
+
+# Empfehlung
+
+
+# Themenvorschläge für Folgeprojekte 
+
+
+# Literatur
+ 
