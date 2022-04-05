@@ -21,7 +21,10 @@ Config/testthat/edition: 3
 Imports: 
     bookdown,
     rmarkdown,
+    rmdhelp,
     stringr,
     tools,
     usethis,
     whoami
+Remotes:
+    charlotte-ngs/rmdhelp
