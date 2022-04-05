@@ -97,7 +97,7 @@ qrmdtmpl::draft_quagprojectreport(ps_path = "example_quagprojectreport",
 # Generate Example Reports
 To demonstrate the use of different templates, example documents can be generated. The following statement creates a German example report with the Qualitas AG Logo and with the document structure that seams to be common for this type of reports.
 
-```{r, echo=TRUE}
+```{r, echo=TRUE, eval=FALSE}
 tmprepdir <- tempdir()
 create_example_qprojektreport(ps_path = tmprepdir)
 unlink(tmprepdir, recursive = TRUE, force = TRUE)
