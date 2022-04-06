@@ -29,7 +29,8 @@ generic_rmd_draft <- function(ps_path,
                    create_dir = ps_create_dir,
                    edit       = FALSE)
 
-  # create full path to new rmd file based on option and ending
+  ## ---- Path specific changes ------
+  ### create full path to new rmd file based on option and ending
   if (ps_create_dir == 'default') {
     create_dir <- get_default_create_dir(ps_template = ps_template, ps_package = ps_package)
   } else {
@@ -42,7 +43,8 @@ generic_rmd_draft <- function(ps_path,
   if (!identical(tolower(tools::file_ext(s_path)), "rmd"))
     s_path <- paste(s_path, '.Rmd', sep = '')
 
-  # substitute placeholers with values
+  ## ---- Placehoder Substitution ----
+  ### substitute placeholers with values
   l_default_repl_value <- get_generic_replacement_values()
   if (is.null(pl_repl_value)){
     l_repl_value <- l_default_repl_value
@@ -60,6 +62,7 @@ generic_rmd_draft <- function(ps_path,
 
 }
 
+## ---- Intermediate Title here -------------------
 
 ## ---- Create Empty Generic Rmarkdown Document -------------------------------
 #'
